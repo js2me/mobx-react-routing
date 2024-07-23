@@ -1,11 +1,14 @@
 {
   "name": "mobx-react-routing",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
+  "exports": {
+    "./create-route": "./dist/create-route.js"
+  },
   "scripts": {
     "prebuild": "rimraf dist & eslint . --fix",
     "build": "tsc",
