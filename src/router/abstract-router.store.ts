@@ -12,6 +12,7 @@ import { generateId } from 'yammies/id';
 
 import { QueryParams, QueryParamsImpl } from '../query-params';
 
+import { AbstractRouterStoreParams } from './abstract-router.store.types';
 import { RouterStore } from './router.store';
 import { LocationData, RouteDeclaration, RouteMatch } from './router.types';
 
@@ -46,11 +47,7 @@ export abstract class AbstractRouterStore implements RouterStore {
     routes,
     fallbackComponent,
     errorBoundaryComponent,
-  }: {
-    routes: RouteDeclaration[];
-    fallbackComponent?: ComponentType;
-    errorBoundaryComponent?: ComponentType;
-  }) {
+  }: AbstractRouterStoreParams) {
     this.fallbackComponent = fallbackComponent;
     this.errorBoundaryComponent = errorBoundaryComponent;
     this.router = createBrowserRouter(
