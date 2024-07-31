@@ -7,10 +7,18 @@ import { generateId } from 'yammies/id';
 import { withRouteBlocker } from './hoc';
 import { RouteDeclaration, RouterStore } from './router';
 
-export const createRoute = (
+export type DefaultCreateRouteFn = (
   routeDeclaration: RouteDeclaration,
   router: RouterStore,
-  factory: Exclude<ViewModelHocConfig<any>['factory'], undefined>,
+  vmFactory: Exclude<ViewModelHocConfig<any>['factory'], undefined>,
+  createChildRoute: DefaultCreateRouteFn,
+) => RouteObject;
+
+export const createRoute: DefaultCreateRouteFn = (
+  routeDeclaration,
+  router,
+  factory,
+  createChildRoute,
 ): RouteObject => {
   const {
     Model,
@@ -36,7 +44,9 @@ export const createRoute = (
   if (!Model && !loader) {
     return {
       id,
-      children: children?.map((route) => createRoute(route, router, factory)),
+      children: children?.map((route) =>
+        createChildRoute(route, router, factory, createChildRoute),
+      ),
       Component,
       path,
       index: index as false,
@@ -85,7 +95,9 @@ export const createRoute = (
 
   return {
     id,
-    children: children?.map((route) => createRoute(route, router, factory)),
+    children: children?.map((route) =>
+      createChildRoute(route, router, factory, createChildRoute),
+    ),
     Component: WrappedComponent,
     path,
     index: index as false,
