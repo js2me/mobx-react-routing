@@ -5,6 +5,8 @@ import type { RouterStore } from '../router';
 
 const DefaultFallback = () => null;
 
+declare const process: { env: { NODE_ENV?: string } };
+
 export function withRouteBlocker<P>(
   router: RouterStore,
   Component: ComponentType<P>,

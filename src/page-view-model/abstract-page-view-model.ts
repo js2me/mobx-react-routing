@@ -6,6 +6,7 @@ import {
 
 import { RawQueryParams } from '../query-params';
 import { RouteDeclaration, RouterStore } from '../router';
+import { AnyObject, EmptyObject } from '../utils/types';
 
 import { PageViewModel } from './page-view-model';
 

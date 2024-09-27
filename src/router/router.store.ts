@@ -1,9 +1,10 @@
 import { Router } from '@remix-run/router';
 import { PathPattern } from '@remix-run/router/utils';
-import { Disposable } from 'mobx-disposer-util';
+import { Disposable } from 'disposer-util';
 import { ComponentType } from 'react';
 
 import type { QueryParams } from '../query-params';
+import { AnyObject } from '../utils/types';
 
 import type { LocationData, RouteMatch } from './router.types';
 

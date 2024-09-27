@@ -7,6 +7,8 @@ import { generateId } from 'yammies/id';
 import { withRouteBlocker } from './hoc';
 import { RouteDeclaration, RouterStore } from './router';
 
+declare const process: { env: { NODE_ENV?: string } };
+
 export type DefaultCreateRouteFn = (
   routeDeclaration: RouteDeclaration,
   router: RouterStore,

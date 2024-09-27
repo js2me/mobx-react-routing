@@ -1,6 +1,8 @@
 import { Router } from '@remix-run/router';
+import { Disposer } from 'disposer-util';
 import { action, observable, runInAction } from 'mobx';
-import { Disposer } from 'mobx-disposer-util';
+
+import { AnyObject } from '../utils/types';
 
 import { QueryParams } from './query-params';
 import { RawQueryParams } from './query-params.types';

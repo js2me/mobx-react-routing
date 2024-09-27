@@ -1,4 +1,5 @@
 import type { QueryParams } from '../query-params';
+import { AnyObject } from '../utils/types';
 
 import type { queryParamsPresets } from './query-params-presets';
 

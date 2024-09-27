@@ -1,6 +1,7 @@
 import { ComponentType, ReactNode } from 'react';
 
 import { PageViewModel } from '../page-view-model';
+import { AnyObject, Class } from '../utils/types';
 
 interface RouteComponentAndModel {
   Component: ComponentType<any>;

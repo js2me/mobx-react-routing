@@ -1,5 +1,7 @@
 import { ViewModel } from 'mobx-vm-entities';
 
+import { AnyObject, EmptyObject } from '../utils/types';
+
 export interface PageViewModel<
   Params extends AnyObject = EmptyObject,
   ParentViewModel extends ViewModel<any, any> = ViewModel<any, any>,

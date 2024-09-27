@@ -24,8 +24,7 @@
     "jsx": "react-jsx"
   },
   "include": [
-    "**/*",
     "src",
-    "types"
+    "./.eslintrc.cjs"
   ]
 }

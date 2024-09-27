@@ -1,4 +1,6 @@
-import { Disposable } from 'mobx-disposer-util';
+import { Disposable } from 'disposer-util';
+
+import { AnyObject } from '../utils/types';
 
 import { RawQueryParams } from './query-params.types';
 

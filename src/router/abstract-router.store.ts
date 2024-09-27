@@ -1,6 +1,6 @@
 import { AgnosticDataRouteMatch, Router } from '@remix-run/router';
+import { Disposer } from 'disposer-util';
 import { action, computed, observable, reaction, runInAction } from 'mobx';
-import { Disposer } from 'mobx-disposer-util';
 import { ComponentType } from 'react';
 import {
   createBrowserRouter,
@@ -11,6 +11,7 @@ import {
 import { generateId } from 'yammies/id';
 
 import { QueryParams, QueryParamsImpl } from '../query-params';
+import { AnyObject } from '../utils/types';
 
 import { AbstractRouterStoreParams } from './abstract-router.store.types';
 import { RouterStore } from './router.store';
