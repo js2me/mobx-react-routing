@@ -14,4 +14,4 @@ dist
 nginx.conf
 jsconfig.json
 *.json
-.eslintrc.js
+.eslintrc.cjs
