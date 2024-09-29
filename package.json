@@ -1,13 +1,13 @@
 {
   "name": "mobx-react-routing",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
   "files": [
     "dist"
   ],
   "scripts": {
-    "prebuild": "rimraf dist & eslint . --fix",
+    "prebuild": "rimraf dist && eslint . --fix",
     "build": "tsc",
     "prepub": "pnpm run build",
     "pub": "npm publish"
