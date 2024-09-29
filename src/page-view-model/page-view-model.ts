@@ -5,7 +5,7 @@ import { AnyObject, EmptyObject } from '../utils/types';
 export interface PageViewModel<
   Params extends AnyObject = EmptyObject,
   ParentViewModel extends ViewModel<any, any> = ViewModel<any, any>,
-> extends ViewModel<EmptyObject, ParentViewModel> {
+> extends ViewModel<any, ParentViewModel> {
   readonly id: string;
 
   /**
