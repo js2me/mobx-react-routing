@@ -1,1 +1,1 @@
-export type RawQueryParams = Record<string, string>;
+export type RawQueryParams = Record<string, string | undefined>;
