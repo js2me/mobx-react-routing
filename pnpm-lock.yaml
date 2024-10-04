@@ -12,8 +12,8 @@ importers:
         specifier: '>=1.16.1'
         version: 1.19.2
       disposer-util:
-        specifier: '*'
-        version: 1.0.0
+        specifier: '>=1.0.7'
+        version: 1.0.7
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -24,8 +24,8 @@ importers:
         specifier: '>=4.0.7'
         version: 4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       mobx-vm-entities:
-        specifier: '>=0.0.13'
-        version: 1.0.0(disposer-util@1.0.0)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1)
+        specifier: '>=2.0.9'
+        version: 2.0.9(disposer-util@1.0.7)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1)
       react:
         specifier: '>=18.3.1'
         version: 18.3.1
@@ -33,11 +33,11 @@ importers:
         specifier: '>=6.23.1'
         version: 6.26.2(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-shared-utils:
-        specifier: '>=1.0.1'
-        version: 1.0.1(lodash-es@4.17.21)(react@18.3.1)(yammies@0.0.11)
+        specifier: '>=2.0.4'
+        version: 2.0.4(lodash-es@4.17.21)(react@18.3.1)(yammies@2.0.3)
       yammies:
-        specifier: '>=0.0.8'
-        version: 0.0.11
+        specifier: '>=2.0.3'
+        version: 2.0.3
     devDependencies:
       '@types/lodash-es':
         specifier: ^4.17.12
@@ -362,8 +362,8 @@ packages:
     resolution: {integrity: sha512-WkrWp9GR4KXfKGYzOLmTuGVi1UWFfws377n9cc55/tb6DuqyF6pcQ5AbiHEshaDpY9v6oaSr2XCDidGmMwdzIA==}
     engines: {node: '>=8'}
 
-  disposer-util@1.0.0:
-    resolution: {integrity: sha512-naf4+x6qIKZSKgbifv0FClbAfYM4CsZPSZfN2iranlSCv5XcXcAmAMtbNwm56pyMmywg0qN9AUYYaqsJ1pAUdA==}
+  disposer-util@1.0.7:
+    resolution: {integrity: sha512-XBLFWtTd6Mcu7uSkGyn/WPqegPV2YqEt4Qh0Qh3cFQdM4PFtsl0Oqa3eE4c7nejFTl2wnWxKjDfwZGLgDarPwA==}
 
   doctrine@2.1.0:
     resolution: {integrity: sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw==}
@@ -910,10 +910,10 @@ packages:
       react-native:
         optional: true
 
-  mobx-vm-entities@1.0.0:
-    resolution: {integrity: sha512-Vr+mLnGtDXyQM3+Xt3QvFIYiVjR4iiSVlAipJc46ywyUddFSp3RZ9U4j5odwUVPl06NEp5kuyeioXnI34VfjFg==}
+  mobx-vm-entities@2.0.9:
+    resolution: {integrity: sha512-odIAQAgOSPwgmTrB85FmtcZctBQd7iOsrWosAcQ7SWshGCfmfpgQiUoZ9lKo6/BpLU/ONJZi+SWttaq9UcnXiw==}
     peerDependencies:
-      disposer-util: '*'
+      disposer-util: ^1.0.2
       mobx: '>=6.12.4'
       mobx-react-lite: '>=4.0.7'
       react: '>=18.3.1'
@@ -1061,8 +1061,8 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
-  react-shared-utils@1.0.1:
-    resolution: {integrity: sha512-3Q5uG8mSJgfQ72LnSkV9rCGRl3J1IUxzfonVFJ/cYoLn2hluRhj9bf0e/kAVJSHePwC9DX9SEKoRaAuisPzHog==}
+  react-shared-utils@2.0.4:
+    resolution: {integrity: sha512-ojazYg4dMEEgMIf0+w3LN3THkL8t/8zXIcJaZzdK6fipKolmAYdiJ5HwFCX4IBe12V/xq9aA2LQ1i3G1xbHK/Q==}
     peerDependencies:
       lodash-es: '*'
       react: '>=18.3.1'
@@ -1315,8 +1315,8 @@ packages:
   wrappy@1.0.2:
     resolution: {integrity: sha512-l4Sp/DRseor9wL6EvV2+TuQn63dMkPjZ/sp9XkghTEbV9KlPS1xUsZ3u7/IQO4wxtcFB4bgpQPRcR3QCvezPcQ==}
 
-  yammies@0.0.11:
-    resolution: {integrity: sha512-AMzdaBtnfoytNzyNFLmFTPVpxJB7IddooZ7yK0d5pJudosuW4xXwE0lD8HtPCj62+GqzdoCrTxlWRHyzFRflwg==}
+  yammies@2.0.3:
+    resolution: {integrity: sha512-JF7QjkrFldfa8zbmtJetPLrwdVEA1svIE9xX/q60OP9sEM/X3S5FQexmkjGwyO7UzwUcLdLknUkWnJ/23aebGQ==}
 
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
@@ -1676,7 +1676,7 @@ snapshots:
     dependencies:
       path-type: 4.0.0
 
-  disposer-util@1.0.0: {}
+  disposer-util@1.0.7: {}
 
   doctrine@2.1.0:
     dependencies:
@@ -2355,9 +2355,9 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  mobx-vm-entities@1.0.0(disposer-util@1.0.0)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1):
+  mobx-vm-entities@2.0.9(disposer-util@1.0.7)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1):
     dependencies:
-      disposer-util: 1.0.0
+      disposer-util: 1.0.7
       lodash-es: 4.17.21
       mobx: 6.13.3
       mobx-react-lite: 4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
@@ -2493,11 +2493,11 @@ snapshots:
       '@remix-run/router': 1.19.2
       react: 18.3.1
 
-  react-shared-utils@1.0.1(lodash-es@4.17.21)(react@18.3.1)(yammies@0.0.11):
+  react-shared-utils@2.0.4(lodash-es@4.17.21)(react@18.3.1)(yammies@2.0.3):
     dependencies:
       lodash-es: 4.17.21
       react: 18.3.1
-      yammies: 0.0.11
+      yammies: 2.0.3
 
   react@18.3.1:
     dependencies:
@@ -2815,7 +2815,7 @@ snapshots:
 
   wrappy@1.0.2: {}
 
-  yammies@0.0.11:
+  yammies@2.0.3:
     dependencies:
       nanoid: 5.0.7
 

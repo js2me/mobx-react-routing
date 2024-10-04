@@ -1,6 +1,6 @@
 {
   "name": "mobx-react-routing",
-  "version": "2.0.4",
+  "version": "2.1.0",
   "files": [
     "*"
   ],
@@ -32,17 +32,17 @@
     "url": "git://github.com/js2me/mobx-react-routing"
   },
   "dependencies": {
-    "react-shared-utils": ">=1.0.1",
+    "react-shared-utils": ">=2.0.4",
     "lodash-es": "^4.17.21"
   },
   "peerDependencies": {
-    "disposer-util": "*",
+    "disposer-util": ">=1.0.7",
     "@remix-run/router": ">=1.16.1",
-    "yammies": ">=0.0.8",
+    "yammies": ">=2.0.3",
     "react-router-dom": ">=6.23.1",
     "mobx": ">=6.12.4",
     "mobx-react-lite": ">=4.0.7",
-    "mobx-vm-entities": ">=0.0.13",
+    "mobx-vm-entities": ">=2.0.9",
     "react": ">=18.3.1"
   },
   "devDependencies": {
