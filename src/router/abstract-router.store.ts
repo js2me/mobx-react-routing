@@ -1,6 +1,13 @@
 import { AgnosticDataRouteMatch, Router } from '@remix-run/router';
 import { Disposer } from 'disposer-util';
-import { action, computed, observable, reaction, runInAction } from 'mobx';
+import {
+  action,
+  computed,
+  makeObservable,
+  observable,
+  reaction,
+  runInAction,
+} from 'mobx';
 import { ComponentType } from 'react';
 import {
   createBrowserRouter,
@@ -22,14 +29,11 @@ export abstract class AbstractRouterStore implements RouterStore {
 
   queryParams: QueryParams;
 
-  @observable
-  accessor matches: RouteMatch[];
+  matches: RouteMatch[];
 
-  @observable
-  accessor location: LocationData;
+  location: LocationData;
 
-  @observable
-  private accessor blockers = new Set<string>();
+  private blockers = new Set<string>();
 
   private router: Router;
 
@@ -37,7 +41,6 @@ export abstract class AbstractRouterStore implements RouterStore {
 
   errorBoundaryComponent?: ComponentType;
 
-  @computed
   get lastMatch(): RouteMatch | null {
     return this.matches[this.matches.length - 1] ?? null;
   }
@@ -58,6 +61,18 @@ export abstract class AbstractRouterStore implements RouterStore {
     this.queryParams = new QueryParamsImpl(this.router);
     this.matches = this.collectRouteMatches(this.router.state.matches);
     this.location = { ...this.router.state.location };
+
+    makeObservable<this, 'blockers'>(this, {
+      matches: observable,
+      location: observable,
+      blockers: observable,
+      blocked: computed,
+      lastMatch: computed,
+      navigate: action.bound,
+      blockRouting: action.bound,
+      unblockRouting: action.bound,
+      back: action.bound,
+    });
 
     this.disposer.add(
       this.router.subscribe((state) => {
@@ -80,7 +95,6 @@ export abstract class AbstractRouterStore implements RouterStore {
     });
   }
 
-  @action.bound
   async navigate(
     to: string | { pathname: string; search?: AnyObject },
     opts?: { replace?: boolean },
@@ -108,7 +122,6 @@ export abstract class AbstractRouterStore implements RouterStore {
     }
   }
 
-  @computed
   get blocked() {
     return !!this.blockers.size;
   }
@@ -132,7 +145,6 @@ export abstract class AbstractRouterStore implements RouterStore {
     };
   }
 
-  @action.bound
   blockRouting(id: string = generateId()) {
     if (!this.blockers.has(id)) {
       this.blockers.add(id);
@@ -140,7 +152,6 @@ export abstract class AbstractRouterStore implements RouterStore {
     return id;
   }
 
-  @action.bound
   unblockRouting(id: string) {
     this.blockers.delete(id);
   }
@@ -154,7 +165,6 @@ export abstract class AbstractRouterStore implements RouterStore {
     this.blockers.clear();
   }
 
-  @action.bound
   async back(): Promise<void> {
     await this.router.navigate(-1);
   }

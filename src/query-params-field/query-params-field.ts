@@ -1,4 +1,4 @@
-import { action, computed } from 'mobx';
+import { action, computed, makeObservable } from 'mobx';
 
 import {
   DefinePresetByType,
@@ -12,19 +12,22 @@ export class QueryParamsField<T> {
 
   constructor(private config: QueryParamsFieldModelConfig<T>) {
     this.name = this.config.name;
+
+    makeObservable(this, {
+      rawValue: computed,
+      value: computed,
+      set: action,
+    });
   }
 
-  @computed
   get rawValue() {
     return this.config.queryParams.data[this.name];
   }
 
-  @computed
   get value(): T {
     return this.config.deserialize(this.rawValue) ?? this.config.defaultValue;
   }
 
-  @action
   set = async (value: T | undefined) => {
     if (value === this.value) {
       return;
