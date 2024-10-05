@@ -77,7 +77,7 @@ export interface RouterStore extends Disposable {
    */
   navigate(
     to: string | { pathname: string; search?: AnyObject },
-    opts?: { replace?: boolean },
+    options?: { replace?: boolean },
   ): Promise<void>;
 
   /**

@@ -45,7 +45,7 @@ export class QueryParamsImpl implements QueryParams {
 
     const urlSearchParams = new URLSearchParams(fixedData);
 
-    return urlSearchParams.size ? `?${urlSearchParams}` : '';
+    return urlSearchParams.size > 0 ? `?${urlSearchParams}` : '';
   }
 
   buildUrl(queryParams: AnyObject) {

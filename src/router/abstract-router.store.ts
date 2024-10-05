@@ -42,7 +42,7 @@ export abstract class AbstractRouterStore implements RouterStore {
   errorBoundaryComponent?: ComponentType;
 
   get lastMatch(): RouteMatch | null {
-    return this.matches[this.matches.length - 1] ?? null;
+    return this.matches.at(-1) ?? null;
   }
 
   abstract createRoute(routeDeclaration: RouteDeclaration): RouteObject;
@@ -97,7 +97,7 @@ export abstract class AbstractRouterStore implements RouterStore {
 
   async navigate(
     to: string | { pathname: string; search?: AnyObject },
-    opts?: { replace?: boolean },
+    options?: { replace?: boolean },
   ): Promise<void> {
     if (typeof to === 'string') {
       const [pathname, search] = to.split('?', 2);
@@ -108,7 +108,7 @@ export abstract class AbstractRouterStore implements RouterStore {
           search,
           hash: '',
         },
-        opts,
+        options,
       );
     } else {
       await this.router.navigate(
@@ -117,17 +117,17 @@ export abstract class AbstractRouterStore implements RouterStore {
           search: this.queryParams.buildSearchString(to.search || {}),
           hash: '',
         },
-        opts,
+        options,
       );
     }
   }
 
   get blocked() {
-    return !!this.blockers.size;
+    return this.blockers.size > 0;
   }
 
   blockRoutingIf(expression: () => boolean, id = generateId()): VoidFunction {
-    const disposeFn = reaction(
+    const disposeFunction = reaction(
       expression,
       (blocks) => {
         if (blocks) {
@@ -141,7 +141,7 @@ export abstract class AbstractRouterStore implements RouterStore {
 
     return () => {
       this.unblockRouting(id);
-      disposeFn();
+      disposeFunction();
     };
   }
 

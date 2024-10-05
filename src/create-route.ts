@@ -1,6 +1,7 @@
 import { ViewModelHocConfig, withViewModel } from 'mobx-vm-entities';
 import { ComponentType } from 'react';
 import { RouteObject } from 'react-router-dom';
+import { NoopComponent } from 'react-shared-utils/components/noop-component';
 import { loadable } from 'react-shared-utils/loadable';
 import { generateId } from 'yammies/id';
 
@@ -9,14 +10,14 @@ import { RouteDeclaration, RouterStore } from './router';
 
 declare const process: { env: { NODE_ENV?: string } };
 
-export type DefaultCreateRouteFn = (
+export type DefaultCreateRouteFunction = (
   routeDeclaration: RouteDeclaration,
   router: RouterStore,
   vmFactory: Exclude<ViewModelHocConfig<any>['factory'], undefined>,
-  createChildRoute: DefaultCreateRouteFn,
+  createChildRoute: DefaultCreateRouteFunction,
 ) => RouteObject;
 
-export const createRoute: DefaultCreateRouteFn = (
+export const createRoute: DefaultCreateRouteFunction = (
   routeDeclaration,
   router,
   factory,
@@ -39,7 +40,7 @@ export const createRoute: DefaultCreateRouteFn = (
     origId ??
     (process.env.NODE_ENV === 'production'
       ? generateId()
-      : `route-${generateId()}${path ? `(path:${path})` : ''}`);
+      : `route-${generateId()}(path:${path ?? '-'})`);
 
   routeDeclaration.id = id;
 
@@ -59,15 +60,13 @@ export const createRoute: DefaultCreateRouteFn = (
 
   let WrappedComponent: ComponentType<any>;
 
-  const DummyComponent = () => null;
-
   if (loader) {
     WrappedComponent = withRouteBlocker(
       router,
       loadable(async () => {
         const { Model, Component } = await loader();
 
-        const UsageComponent = Component || DummyComponent;
+        const UsageComponent = Component || NoopComponent;
 
         return Model
           ? withViewModel(Model, {
@@ -80,7 +79,7 @@ export const createRoute: DefaultCreateRouteFn = (
       fallback,
     );
   } else {
-    const UsageComponent = Component || DummyComponent;
+    const UsageComponent = Component || NoopComponent;
 
     WrappedComponent = withRouteBlocker(
       router,
