@@ -1,9 +1,6 @@
 {
   "name": "mobx-react-routing",
   "version": "2.1.1",
-  "files": [
-    "*"
-  ],
   "scripts": {
     "clean": "rimraf dist",
     "prebuild": "npm run clean && eslint . --fix",
