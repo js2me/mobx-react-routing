@@ -3,26 +3,36 @@ import { ComponentType } from 'react';
 import { RouteObject } from 'react-router-dom';
 import { NoopComponent } from 'react-shared-utils/components/noop-component';
 import { loadable } from 'react-shared-utils/loadable';
-import { generateId } from 'yammies/id';
 
 import { withRouteBlocker } from './hoc';
 import { RouteDeclaration, RouterStore } from './router';
 
 declare const process: { env: { NODE_ENV?: string } };
 
+interface CreateRouteFunctionParams {
+  declaration: RouteDeclaration;
+  router: RouterStore;
+  factory: Exclude<ViewModelHocConfig<any>['factory'], undefined>;
+  createChildRoute: DefaultCreateRouteFunction;
+  /**
+   * Индексовое представление роута
+   */
+  parentPath: number[];
+  index: number;
+}
+
 export type DefaultCreateRouteFunction = (
-  routeDeclaration: RouteDeclaration,
-  router: RouterStore,
-  vmFactory: Exclude<ViewModelHocConfig<any>['factory'], undefined>,
-  createChildRoute: DefaultCreateRouteFunction,
+  params: CreateRouteFunctionParams,
 ) => RouteObject;
 
-export const createRoute: DefaultCreateRouteFunction = (
-  routeDeclaration,
+export const createRoute: DefaultCreateRouteFunction = ({
+  declaration,
   router,
   factory,
   createChildRoute,
-): RouteObject => {
+  parentPath,
+  index,
+}): RouteObject => {
   const {
     Model,
     Component,
@@ -32,27 +42,36 @@ export const createRoute: DefaultCreateRouteFunction = (
     fallback = router?.fallbackComponent,
     children,
     errorBoundary = router?.errorBoundaryComponent,
-    index,
+    index: isIndexRoute,
     element,
-  } = routeDeclaration;
+  } = declaration;
+
+  const treePath = [...parentPath, index];
 
   const id =
     origId ??
     (process.env.NODE_ENV === 'production'
-      ? generateId()
-      : `route-${generateId()}(path:${path ?? '-'})`);
+      ? `route-${treePath.join('-')}`
+      : `route-${treePath.join('-')}(path:${path ?? '-'})`);
 
-  routeDeclaration.id = id;
+  declaration.id = id;
 
   if (!Model && !loader) {
     return {
       id,
-      children: children?.map((route) =>
-        createChildRoute(route, router, factory, createChildRoute),
+      children: children?.map((route, index) =>
+        createChildRoute({
+          declaration: route,
+          router,
+          factory,
+          createChildRoute,
+          parentPath: treePath,
+          index,
+        }),
       ),
       Component,
       path,
-      index: index as false,
+      index: isIndexRoute as false,
       element,
       ErrorBoundary: errorBoundary,
     };
@@ -96,12 +115,19 @@ export const createRoute: DefaultCreateRouteFunction = (
 
   return {
     id,
-    children: children?.map((route) =>
-      createChildRoute(route, router, factory, createChildRoute),
+    children: children?.map((route, index) =>
+      createChildRoute({
+        declaration: route,
+        router,
+        factory,
+        createChildRoute,
+        parentPath: treePath,
+        index,
+      }),
     ),
     Component: WrappedComponent,
     path,
-    index: index as false,
+    index: isIndexRoute as false,
 
     element,
     ErrorBoundary: errorBoundary,
