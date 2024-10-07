@@ -9,7 +9,7 @@ import { RouteDeclaration, RouterStore } from './router';
 
 declare const process: { env: { NODE_ENV?: string } };
 
-interface CreateRouteFunctionParams {
+export interface CreateRouteFunctionParams {
   declaration: RouteDeclaration;
   router: RouterStore;
   factory: Exclude<ViewModelHocConfig<any>['factory'], undefined>;

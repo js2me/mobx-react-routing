@@ -45,7 +45,10 @@ export abstract class AbstractRouterStore implements RouterStore {
     return this.matches.at(-1) ?? null;
   }
 
-  abstract createRoute(routeDeclaration: RouteDeclaration): RouteObject;
+  abstract createRoute(
+    routeDeclaration: RouteDeclaration,
+    index: number,
+  ): RouteObject;
 
   constructor({
     routes,
@@ -54,8 +57,9 @@ export abstract class AbstractRouterStore implements RouterStore {
   }: AbstractRouterStoreParams) {
     this.fallbackComponent = fallbackComponent;
     this.errorBoundaryComponent = errorBoundaryComponent;
+
     this.router = createBrowserRouter(
-      routes.map((route) => this.createRoute(route)),
+      routes.map((route, index) => this.createRoute(route, index)),
     );
 
     this.queryParams = new QueryParamsImpl(this.router);
