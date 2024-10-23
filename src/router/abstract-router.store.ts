@@ -48,6 +48,7 @@ export abstract class AbstractRouterStore implements RouterStore {
   abstract createRoute(
     routeDeclaration: RouteDeclaration,
     index: number,
+    parentPath: number[],
   ): RouteObject;
 
   constructor({
@@ -59,7 +60,7 @@ export abstract class AbstractRouterStore implements RouterStore {
     this.errorBoundaryComponent = errorBoundaryComponent;
 
     this.router = createBrowserRouter(
-      routes.map((route, index) => this.createRoute(route, index)),
+      routes.map((route, index) => this.createRoute(route, index, [])),
     );
 
     this.queryParams = new QueryParamsImpl(this.router);
