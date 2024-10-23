@@ -1,14 +1,11 @@
-import {
-  ViewModel,
-  ViewModelCreateConfig,
-  withViewModel,
-} from 'mobx-vm-entities';
+import { ViewModelCreateConfig, withViewModel } from 'mobx-vm-entities';
 import { ComponentType } from 'react';
 import { RouteObject } from 'react-router-dom';
 import { NoopComponent } from 'react-shared-utils/components/noop-component';
 import { loadable } from 'react-shared-utils/loadable';
 
 import { withRouteBlocker } from './hoc';
+import { PageViewModel } from './page-view-model';
 import { RouteDeclaration, RouterStore } from './router';
 
 declare const process: { env: { NODE_ENV?: string } };
@@ -30,12 +27,10 @@ export type DefaultCreateRouteFunction = (
   params: CreateRouteFunctionParams,
 ) => RouteObject;
 
-export type CreateRouteViewModelFactory = <
-  VM extends ViewModel<any> = ViewModel<any>,
->(
-  config: ViewModelCreateConfig<VM>,
+export type CreateRouteViewModelFactory = (
+  config: ViewModelCreateConfig<PageViewModel<any, any>>,
   declaration: RouteDeclaration,
-) => VM;
+) => PageViewModel<any, any>;
 
 export const createRoute: DefaultCreateRouteFunction = ({
   declaration,
