@@ -1,4 +1,8 @@
-import { ViewModelHocConfig, withViewModel } from 'mobx-vm-entities';
+import {
+  ViewModel,
+  ViewModelCreateConfig,
+  withViewModel,
+} from 'mobx-vm-entities';
 import { ComponentType } from 'react';
 import { RouteObject } from 'react-router-dom';
 import { NoopComponent } from 'react-shared-utils/components/noop-component';
@@ -12,10 +16,11 @@ declare const process: { env: { NODE_ENV?: string } };
 export interface CreateRouteFunctionParams {
   declaration: RouteDeclaration;
   router: RouterStore;
-  factory: Exclude<ViewModelHocConfig<any>['factory'], undefined>;
+  factory: CreateRouteViewModelFactory;
   createChildRoute: DefaultCreateRouteFunction;
   /**
    * Индексовое представление роута
+   * @example [0, 0, 0]
    */
   parentPath: number[];
   index: number;
@@ -24,6 +29,13 @@ export interface CreateRouteFunctionParams {
 export type DefaultCreateRouteFunction = (
   params: CreateRouteFunctionParams,
 ) => RouteObject;
+
+export type CreateRouteViewModelFactory = <
+  VM extends ViewModel<any> = ViewModel<any>,
+>(
+  config: ViewModelCreateConfig<VM>,
+  declaration: RouteDeclaration,
+) => VM;
 
 export const createRoute: DefaultCreateRouteFunction = ({
   declaration,
@@ -59,11 +71,11 @@ export const createRoute: DefaultCreateRouteFunction = ({
   if (!Model && !loader) {
     return {
       id,
-      children: children?.map((route, index) =>
+      children: children?.map((declaration, index) =>
         createChildRoute({
-          declaration: route,
+          declaration,
           router,
-          factory,
+          factory: (config) => factory(config, declaration),
           createChildRoute,
           parentPath: treePath,
           index,
@@ -91,7 +103,7 @@ export const createRoute: DefaultCreateRouteFunction = ({
           ? withViewModel(Model, {
               id,
               fallback,
-              factory,
+              factory: (config) => factory(config, declaration),
             })(UsageComponent)
           : UsageComponent;
       }, fallback),
@@ -106,7 +118,7 @@ export const createRoute: DefaultCreateRouteFunction = ({
         ? withViewModel(Model, {
             id,
             fallback,
-            factory,
+            factory: (config) => factory(config, declaration),
           })(UsageComponent)
         : UsageComponent,
       fallback,
