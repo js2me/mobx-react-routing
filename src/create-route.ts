@@ -14,7 +14,7 @@ export interface CreateRouteFunctionParams {
   declaration: RouteDeclaration;
   router: RouterStore;
   factory: CreateRouteViewModelFactory;
-  createChildRoute: DefaultCreateRouteFunction;
+  createChildRoute?: DefaultCreateRouteFunction;
   /**
    * Индексовое представление роута
    * @example [0, 0, 0]
@@ -36,7 +36,7 @@ export const createRoute: DefaultCreateRouteFunction = ({
   declaration,
   router,
   factory,
-  createChildRoute,
+  createChildRoute = createRoute,
   parentPath,
   index,
 }): RouteObject => {
