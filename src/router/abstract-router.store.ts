@@ -112,7 +112,7 @@ export abstract class AbstractRouterStore implements RouterStore {
 
       return {
         pathname,
-        search,
+        search: search ? `?${search}` : '',
         hash: '',
       };
     } else {
@@ -127,7 +127,7 @@ export abstract class AbstractRouterStore implements RouterStore {
   createUrl(to: RouterToConfig): string {
     const path = this.createPath(to);
 
-    return `${path.pathname}${path.search ? `?${path.search}` : ''}${path.hash}`;
+    return `${path.pathname}${path.search}${path.hash}`;
   }
 
   async navigate(
