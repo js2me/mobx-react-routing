@@ -83,3 +83,17 @@ export interface RouteDeclaration extends Partial<RouteComponentAndModel> {
    */
   children?: RouteDeclaration[];
 }
+
+/**
+ * Интерфейс, который описывает путь, до которого нужно перейти
+ */
+export interface RouterPath {
+  pathname: string;
+  search: string;
+  hash: string;
+}
+
+/**
+ * Описание конфигурации, по которой происходит навигация
+ */
+export type RouterToConfig = string | { pathname: string; search?: AnyObject };

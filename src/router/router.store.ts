@@ -6,7 +6,12 @@ import { ComponentType } from 'react';
 import type { QueryParams } from '../query-params';
 import { AnyObject } from '../utils/types';
 
-import type { LocationData, RouteMatch } from './router.types';
+import type {
+  LocationData,
+  RouteMatch,
+  RouterPath,
+  RouterToConfig,
+} from './router.types';
 
 export interface RouterStore extends Disposable {
   /**
@@ -70,6 +75,22 @@ export interface RouterStore extends Disposable {
    * Удалить блокировщик роутинга
    */
   unblockRouting(id: string): void;
+
+  /**
+   * Создает объект {@link RouterPath} на основе конфигурации маршрута.
+   *
+   * @param to - Конфигурация маршрута, включая в себя путь, параметры поиска и хеш.
+   * @returns Объект {@link RouterPath} со значениями pathname, search, hash.
+   */
+  createPath(to: RouterToConfig): RouterPath;
+
+  /**
+   * Создает URL на основе конфигурации маршрута.
+   *
+   * @param to - Конфигурация маршрута, включающая в себя путь и параметры поиска.
+   * @returns Сформированный URL в виде строки.
+   */
+  createUrl(to: RouterToConfig): string;
 
   /**
    * Навигация по приложению.

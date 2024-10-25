@@ -22,7 +22,13 @@ import { AnyObject } from '../utils/types';
 
 import { AbstractRouterStoreParams } from './abstract-router.store.types';
 import { RouterStore } from './router.store';
-import { LocationData, RouteDeclaration, RouteMatch } from './router.types';
+import {
+  LocationData,
+  RouteDeclaration,
+  RouteMatch,
+  RouterPath,
+  RouterToConfig,
+} from './router.types';
 
 export abstract class AbstractRouterStore implements RouterStore {
   private disposer = new Disposer();
@@ -100,31 +106,35 @@ export abstract class AbstractRouterStore implements RouterStore {
     });
   }
 
-  async navigate(
-    to: string | { pathname: string; search?: AnyObject },
-    options?: { replace?: boolean },
-  ): Promise<void> {
+  createPath(to: RouterToConfig): RouterPath {
     if (typeof to === 'string') {
       const [pathname, search] = to.split('?', 2);
 
-      await this.router.navigate(
-        {
-          pathname,
-          search,
-          hash: '',
-        },
-        options,
-      );
+      return {
+        pathname,
+        search,
+        hash: '',
+      };
     } else {
-      await this.router.navigate(
-        {
-          pathname: to.pathname,
-          search: this.queryParams.buildSearchString(to.search || {}),
-          hash: '',
-        },
-        options,
-      );
+      return {
+        pathname: to.pathname,
+        search: this.queryParams.buildSearchString(to.search || {}),
+        hash: '',
+      };
     }
+  }
+
+  createUrl(to: RouterToConfig): string {
+    const path = this.createPath(to);
+
+    return `${path.pathname}${path.search ? `?${path.search}` : ''}${path.hash}`;
+  }
+
+  async navigate(
+    to: RouterToConfig,
+    options?: { replace?: boolean },
+  ): Promise<void> {
+    await this.router.navigate(this.createUrl(to), options);
   }
 
   get blocked() {
