@@ -24,7 +24,7 @@ export abstract class AbstractPageViewModel<
   constructor(
     routeDeclaration: RouteDeclaration,
     router: RouterStore,
-    config: AbstractViewModelParams<EmptyObject>,
+    config: AbstractViewModelParams<any>,
   ) {
     super(config);
 
