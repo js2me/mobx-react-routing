@@ -14,7 +14,7 @@ export abstract class AbstractPageViewModel<
     Params extends AnyObject = EmptyObject,
     ParentViewModel extends ViewModel<any, any> = ViewModel<any, any>,
   >
-  extends AbstractViewModel<EmptyObject, ParentViewModel>
+  extends AbstractViewModel<any, ParentViewModel>
   implements PageViewModel<Params, ParentViewModel>
 {
   protected router: RouterStore;
