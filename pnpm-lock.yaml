@@ -24,8 +24,8 @@ importers:
         specifier: '>=4.0.7'
         version: 4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       mobx-vm-entities:
-        specifier: '>=2.0.10'
-        version: 2.0.10(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1)
+        specifier: '>=3.1.2'
+        version: 3.1.2(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1)
       react:
         specifier: '>=18.3.1'
         version: 18.3.1
@@ -1855,10 +1855,10 @@ packages:
       react-native:
         optional: true
 
-  mobx-vm-entities@2.0.10:
-    resolution: {integrity: sha512-9JnskoRYvhrK6g5FoNlMBZ7m3Sf7v1G+p2uBIXrlC4ozc0y2lDc3+rmqAUc+wsbqqtbxIHKWMQqVxfMUNHu/2w==}
+  mobx-vm-entities@3.1.2:
+    resolution: {integrity: sha512-PlpzyqSoC82++9Sn4v3e39rRUAmeTJjlYvb0iQLouFP9tvHHDPZcq7MojStKMx6/AIljxkAAXrvQT4fa8PqyXg==}
     peerDependencies:
-      disposer-util: ^1.0.2
+      disposer-util: ^1.0.9
       mobx: '>=6.12.4'
       mobx-react-lite: '>=4.0.7'
       react: '>=18.3.1'
@@ -4689,7 +4689,7 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  mobx-vm-entities@2.0.10(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1):
+  mobx-vm-entities@3.1.2(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1):
     dependencies:
       disposer-util: 1.0.9
       lodash-es: 4.17.21
