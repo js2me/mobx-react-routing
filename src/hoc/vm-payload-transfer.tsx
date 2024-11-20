@@ -10,6 +10,6 @@ export const VMPayloadTransferHOC = (Component: Maybe<ComponentType<any>>) => {
     // eslint-disable-next-line sonarjs/rules-of-hooks
     const params = useParams();
 
-    return <Component {...props} payload={params} />;
+    return <Component {...props} payload={props?.payload ?? params} />;
   };
 };
