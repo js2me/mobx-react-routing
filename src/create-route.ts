@@ -5,6 +5,7 @@ import { NoopComponent } from 'react-shared-utils/components/noop-component';
 import { loadable } from 'react-shared-utils/loadable';
 
 import { withRouteBlocker } from './hoc';
+import { VMPayloadTransferHOC } from './hoc/vm-payload-transfer';
 import { PageViewModel } from './page-view-model';
 import { RouteDeclaration, RouterStore } from './router';
 
@@ -76,7 +77,7 @@ export const createRoute: DefaultCreateRouteFunction = ({
           index,
         }),
       ),
-      Component,
+      Component: VMPayloadTransferHOC(Component),
       path,
       index: isIndexRoute as false,
       element,
@@ -132,7 +133,7 @@ export const createRoute: DefaultCreateRouteFunction = ({
         index,
       }),
     ),
-    Component: WrappedComponent,
+    Component: VMPayloadTransferHOC(WrappedComponent),
     path,
     index: isIndexRoute as false,
 
