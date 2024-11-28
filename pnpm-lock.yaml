@@ -24,8 +24,8 @@ importers:
         specifier: '>=4.0.7'
         version: 4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       mobx-vm-entities:
-        specifier: '>=3.1.2'
-        version: 3.1.2(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1)
+        specifier: '>=4.1.1'
+        version: 4.1.1(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1)
       react:
         specifier: '>=18.3.1'
         version: 18.3.1
@@ -1855,8 +1855,8 @@ packages:
       react-native:
         optional: true
 
-  mobx-vm-entities@3.1.2:
-    resolution: {integrity: sha512-PlpzyqSoC82++9Sn4v3e39rRUAmeTJjlYvb0iQLouFP9tvHHDPZcq7MojStKMx6/AIljxkAAXrvQT4fa8PqyXg==}
+  mobx-vm-entities@4.1.1:
+    resolution: {integrity: sha512-nXhmQXAoElL82dUA58m88zavIBxeWm45G/DOKTeI4OsPQUSc1ucz/IcKfpqkxqRTTnvGRXW5FaNIWaUWAZ4NZg==}
     peerDependencies:
       disposer-util: ^1.0.9
       mobx: '>=6.12.4'
@@ -2045,6 +2045,11 @@ packages:
       lodash-es: '*'
       react: '>=18.3.1'
       yammies: '>=0.0.7'
+
+  react-simple-loadable@1.0.0:
+    resolution: {integrity: sha512-mN1T5f9d3m2TBkCmY/BiNY0kf573jDfAHRBJAttT5RPG4n9/bmF9dq6XWGAm3zgOzeMyJYujRSGSRO957RbMyQ==}
+    peerDependencies:
+      react: <19
 
   react@18.3.1:
     resolution: {integrity: sha512-wS+hAgJShR0KhEvPJArfuPVN1+Hz1t0Y6n5jLrGQbkb4urgPE/0Rve+1kMB1v/oWgHgm4WIcV+i7F2pTVj+2iQ==}
@@ -2424,6 +2429,9 @@ packages:
 
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
+
+  yammies@2.0.10:
+    resolution: {integrity: sha512-cO2ByV6tuhFNLRftUBH+uVxg7mvK7aEtXCvrAb9wSQ7fPi1c1XmHH0t10qJ1LPztNMxe+j8E//OwOuRXeQMJBg==}
 
   yammies@2.0.4:
     resolution: {integrity: sha512-T9c6iqzKEBLebjjjBeZ+qxn2OJZTgKJN5s7naA8wPZzk+IHgqTnUXGo5Nejru+kdE9p2jeT6QrquOkUIRX9I7A==}
@@ -4689,13 +4697,14 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  mobx-vm-entities@3.1.2(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1):
+  mobx-vm-entities@4.1.1(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1):
     dependencies:
       disposer-util: 1.0.9
       lodash-es: 4.17.21
       mobx: 6.13.3
       mobx-react-lite: 4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react: 18.3.1
+      react-simple-loadable: 1.0.0(react@18.3.1)
 
   mobx@6.13.3: {}
 
@@ -4867,6 +4876,11 @@ snapshots:
       lodash-es: 4.17.21
       react: 18.3.1
       yammies: 2.0.4
+
+  react-simple-loadable@1.0.0(react@18.3.1):
+    dependencies:
+      react: 18.3.1
+      yammies: 2.0.10
 
   react@18.3.1:
     dependencies:
@@ -5328,6 +5342,10 @@ snapshots:
   wrappy@1.0.2: {}
 
   yallist@3.1.1: {}
+
+  yammies@2.0.10:
+    dependencies:
+      nanoid: 5.0.7
 
   yammies@2.0.4:
     dependencies:

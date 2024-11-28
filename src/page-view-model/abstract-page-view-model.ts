@@ -1,7 +1,7 @@
 import {
   AbstractViewModel,
   AbstractViewModelParams,
-  ViewModel,
+  AnyViewModel,
 } from 'mobx-vm-entities';
 
 import { RawQueryParams } from '../query-params';
@@ -12,7 +12,7 @@ import { PageViewModel } from './page-view-model';
 
 export abstract class AbstractPageViewModel<
     Params extends AnyObject = EmptyObject,
-    ParentViewModel extends ViewModel<any, any> = ViewModel<any, any>,
+    ParentViewModel extends AnyViewModel | null = null,
   >
   extends AbstractViewModel<any, ParentViewModel>
   implements PageViewModel<Params, ParentViewModel>
@@ -24,7 +24,7 @@ export abstract class AbstractPageViewModel<
   constructor(
     routeDeclaration: RouteDeclaration,
     router: RouterStore,
-    config: AbstractViewModelParams<any>,
+    config: AbstractViewModelParams<Params, ParentViewModel>,
   ) {
     super(config);
 

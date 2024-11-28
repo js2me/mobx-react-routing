@@ -1,10 +1,10 @@
-import { ViewModel } from 'mobx-vm-entities';
+import { AnyViewModel, ViewModel } from 'mobx-vm-entities';
 
 import { AnyObject, EmptyObject } from '../utils/types';
 
 export interface PageViewModel<
   Params extends AnyObject = EmptyObject,
-  ParentViewModel extends ViewModel<any, any> = ViewModel<any, any>,
+  ParentViewModel extends AnyViewModel | null = null,
 > extends ViewModel<any, ParentViewModel> {
   readonly id: string;
 
