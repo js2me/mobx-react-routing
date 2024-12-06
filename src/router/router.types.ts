@@ -5,7 +5,7 @@ import { AnyObject, Class } from '../utils/types';
 
 interface RouteComponentAndModel {
   Component: ComponentType<any>;
-  Model: Class<PageViewModel<any>>;
+  Model: Class<PageViewModel<any, any>>;
 }
 
 export interface RouteMatch {
