@@ -73,17 +73,17 @@ export abstract class AbstractRouterStore implements RouterStore {
     this.matches = this.collectRouteMatches(this.router.state.matches);
     this.location = { ...this.router.state.location };
 
-    makeObservable<this, 'blockers'>(this, {
-      matches: observable,
-      location: observable,
-      blockers: observable,
-      blocked: computed,
-      lastMatch: computed,
-      navigate: action.bound,
-      blockRouting: action.bound,
-      unblockRouting: action.bound,
-      back: action.bound,
-    });
+    observable(this, 'matches');
+    observable(this, 'location');
+    observable(this, 'blockers');
+    computed(this, 'blocked');
+    computed(this, 'lastMatch');
+    action.bound(this, 'navigate');
+    action.bound(this, 'blockRouting');
+    action.bound(this, 'unblockRouting');
+    action.bound(this, 'back');
+
+    makeObservable(this);
 
     this.disposer.add(
       this.router.subscribe((state) => {

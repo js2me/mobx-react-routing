@@ -13,11 +13,11 @@ export class QueryParamsField<T> {
   constructor(private config: QueryParamsFieldModelConfig<T>) {
     this.name = this.config.name;
 
-    makeObservable(this, {
-      rawValue: computed,
-      value: computed,
-      set: action,
-    });
+    computed(this, 'rawValue');
+    computed(this, 'value');
+    action(this, 'set');
+
+    makeObservable(this);
   }
 
   get rawValue() {

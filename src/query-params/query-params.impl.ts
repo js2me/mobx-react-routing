@@ -15,11 +15,11 @@ export class QueryParamsImpl implements QueryParams {
   constructor(private router: Router) {
     this.data = this.getSearchParamsData();
 
-    makeObservable(this, {
-      data: observable.struct,
-      set: action,
-      update: action,
-    });
+    observable.struct(this, 'data');
+    action(this, 'set');
+    action(this, 'update');
+
+    makeObservable(this);
 
     this.disposer.add(
       this.router.subscribe(() => {
