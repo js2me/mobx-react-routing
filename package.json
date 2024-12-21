@@ -1,6 +1,6 @@
 {
   "name": "mobx-react-routing",
-  "version": "4.0.3",
+  "version": "4.1.0",
   "scripts": {
     "clean": "rimraf dist",
     "check": "eslint . --fix",
@@ -20,7 +20,7 @@
   ],
   "author": "js2me",
   "license": "MIT",
-  "description": "MobX react-router-dom integration",  
+  "description": "MobX react-router-dom integration",
   "bugs": {
     "url": "https://github.com/js2me/mobx-react-routing/issues"
   },
