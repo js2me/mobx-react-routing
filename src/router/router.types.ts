@@ -10,23 +10,23 @@ interface RouteComponentAndModel {
 
 export interface RouteMatch {
   /**
-   * PATH параметры роута
+   * PATH parameters of the route
    */
   params: AnyObject;
 
   /**
-   * Полный путь роута
+   * Full path of the route
    * /url/user-id-1
    */
   pathname: string;
 
   /**
-   * Идентификатор роута (задается в роутах react-router-dom или в функции route)
+   * Identifier of the route (set in react-router-dom routes or in the route function)
    */
   id: string;
 
   /**
-   * Паттерн пути роута
+   * Path pattern of the route
    * /url/:userId
    */
   path?: string;
@@ -51,41 +51,41 @@ export interface LocationData {
 
 export interface RouteDeclaration extends Partial<RouteComponentAndModel> {
   /**
-   * Корневой роут от родительского пути или нет
+   * Root route from the parent path or not
    */
   index?: boolean;
   /**
-   * Путь
+   * Path
    */
   path?: string;
   /**
-   * идентификатор
+   * Identifier
    */
   id?: string;
   /**
-   * Элемент, который будет отрисован (Component/Model будут проигнорированы)
+   * Element to be rendered (Component/Model will be ignored)
    */
   element?: ReactNode;
   /**
-   * Ленивый загрузчик компонента и модели
+   * Lazy loader for the component and model
    */
   loader?: () => Promise<Partial<RouteComponentAndModel>>;
   /**
-   * Дефолтный компонент, который будет отображаться на этапах загрузки компонента\модели или когда роутинг заблокирован
+   * Default component to be displayed during the loading stages of the component/model or when routing is blocked
    */
   fallback?: ComponentType;
   /**
-   * Отлавливатель ошибок
+   * Error handler
    */
   errorBoundary?: ComponentType;
   /**
-   * Дочерние роуты
+   * Child routes
    */
   children?: RouteDeclaration[];
 }
 
 /**
- * Интерфейс, который описывает путь, до которого нужно перейти
+ * Interface that describes the path to navigate to
  */
 export interface RouterPath {
   pathname: string;
@@ -94,6 +94,13 @@ export interface RouterPath {
 }
 
 /**
- * Описание конфигурации, по которой происходит навигация
+ * Description of the configuration for navigation
  */
 export type RouterToConfig = string | { pathname: string; search?: AnyObject };
+
+export interface RouterStoreParams {
+  routes: RouteDeclaration[];
+  fallbackComponent?: ComponentType;
+  errorBoundaryComponent?: ComponentType;
+  abortSignal?: AbortSignal;
+}

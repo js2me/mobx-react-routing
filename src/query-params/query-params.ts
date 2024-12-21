@@ -6,32 +6,32 @@ import { RawQueryParams } from './query-params.types';
 
 export interface QueryParams extends Disposable {
   /**
-   * Все распаршенные квери параметры текущей урлы
+   * All parsed query parameters of the current url
    */
   data: RawQueryParams;
 
   /**
-   * Задать квери параметры текущему урлу
+   * Set query parameters to the current url
    */
   set(queryParams: AnyObject, replace?: boolean): Promise<void>;
 
   /**
-   * Обновить квери параметры текущему урлу
+   * Update query parameters of the current url
    */
   update(queryParams: AnyObject, replace?: boolean): Promise<void>;
 
   /**
-   * Собрать строку search из data
+   * Build search string from data
    */
   buildSearchString(queryParams: AnyObject): string;
 
   /**
-   * Собрать строку url вместе query params
+   * Build url string with query params
    */
   buildUrl(queryParams: AnyObject): string;
 
   /**
-   * Получить query параметры из search строки
+   * Get query parameters from search string
    */
   getSearchParamsData(search?: string): AnyObject;
 }

@@ -14,6 +14,9 @@ importers:
       disposer-util:
         specifier: '>=1.0.9'
         version: 1.0.9
+      linked-abort-controller:
+        specifier: ^1.0.4
+        version: 1.0.4
       lodash-es:
         specifier: ^4.17.21
         version: 4.17.21
@@ -24,8 +27,8 @@ importers:
         specifier: '>=4.0.7'
         version: 4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       mobx-vm-entities:
-        specifier: '>=4.3.12'
-        version: 4.3.12(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1)
+        specifier: '>=4.4.5'
+        version: 4.4.5(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1)
       react:
         specifier: '>=18.3.1'
         version: 18.3.1
@@ -1781,6 +1784,9 @@ packages:
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
 
+  linked-abort-controller@1.0.4:
+    resolution: {integrity: sha512-yzZFM8ZlqhCH7z9fqfOva2trCVP7RDftCAj6YCJuzucMHhcuFBtcThsQNgGEDZbtH0tnPaMuTgMxKa8Pc3zepw==}
+
   locate-path@5.0.0:
     resolution: {integrity: sha512-t7hw9pI+WvuwNJXwk5zVHpyhIqzg2qTlklJOf0mVxGSbe3Fp2VieZcduNYjaLDoy6p9uGpQEGWG87WpMKlNq8g==}
     engines: {node: '>=8'}
@@ -1855,8 +1861,8 @@ packages:
       react-native:
         optional: true
 
-  mobx-vm-entities@4.3.12:
-    resolution: {integrity: sha512-kx3zc64RSheSDqAy96uBmXTZJso4nxZl8lQ3P0ahMxeylu5btV4xZZg4vL3z4HfXTmXWsWv0RTzghsl2LI+lxA==}
+  mobx-vm-entities@4.4.5:
+    resolution: {integrity: sha512-HwnvOsC8z+uQ1hIPaGz+o4/LEJTgNOzYnya0Is5oiK2VWEKuxL+yvNIPr9wd9Up8Ds0C8meIDxu28CYJWfh4Wg==}
     peerDependencies:
       disposer-util: ^1.0.9
       mobx: '>=6.12.4'
@@ -4638,6 +4644,8 @@ snapshots:
 
   lines-and-columns@1.2.4: {}
 
+  linked-abort-controller@1.0.4: {}
+
   locate-path@5.0.0:
     dependencies:
       p-locate: 4.1.0
@@ -4697,7 +4705,7 @@ snapshots:
     optionalDependencies:
       react-dom: 18.3.1(react@18.3.1)
 
-  mobx-vm-entities@4.3.12(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1):
+  mobx-vm-entities@4.4.5(disposer-util@1.0.9)(mobx-react-lite@4.0.7(mobx@6.13.3)(react-dom@18.3.1(react@18.3.1))(react@18.3.1))(mobx@6.13.3)(react@18.3.1):
     dependencies:
       disposer-util: 1.0.9
       lodash-es: 4.17.21

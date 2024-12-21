@@ -9,12 +9,12 @@ export interface PageViewModel<
   readonly id: string;
 
   /**
-   * Параметры роута, которые указаны в адресной строке и описаны в роуте
+   * Route parameters specified in the address bar and described in the route
    */
   pathParams: Params;
 
   /**
-   * Все квери параметры, которые есть на текущей странице
+   * All query parameters available on the current page
    */
   queryParams: AnyObject;
 }

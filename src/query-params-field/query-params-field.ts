@@ -52,8 +52,8 @@ export class QueryParamsField<T> {
   };
 
   /**
-   * Создание get\set значения, которое синхронизируется с квери параметром
-   * Создание по пресету
+   * Create get\set value, which is synchronized with the query parameter
+   * Create by preset
    */
   static createWithPreset<T>(
     config: QueryParamsFieldModelPresetConfig<DefinePresetByType<T>, T>,
@@ -68,8 +68,8 @@ export class QueryParamsField<T> {
   }
 
   /**
-   * Создание get\set значения, которое синхронизируется с квери параметром
-   * Ручная обработка квери параметра
+   * Create get\set value, which is synchronized with the query parameter
+   * Manual handling of the query parameter
    */
   static create<T>(
     config: QueryParamsFieldModelConfig<T>,

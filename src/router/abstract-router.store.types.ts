@@ -1,9 +1,6 @@
-import { ComponentType } from 'react';
+import { RouterStoreParams } from './router.types';
 
-import { RouteDeclaration } from './router.types';
-
-export interface AbstractRouterStoreParams {
-  routes: RouteDeclaration[];
-  fallbackComponent?: ComponentType;
-  errorBoundaryComponent?: ComponentType;
-}
+/**
+ * @deprecated Will be removed in 5.0.0. Please use {@link RouterStoreImpl} instead
+ */
+export interface AbstractRouterStoreParams extends RouterStoreParams {}

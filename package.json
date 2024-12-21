@@ -28,6 +28,7 @@
     "url": "git://github.com/js2me/mobx-react-routing"
   },
   "dependencies": {
+    "linked-abort-controller": "^1.0.4",
     "lodash-es": "^4.17.21",
     "react-shared-utils": ">=2.0.6"
   },
@@ -36,7 +37,7 @@
     "disposer-util": ">=1.0.9",
     "mobx": ">=6.12.4",
     "mobx-react-lite": ">=4.0.7",
-    "mobx-vm-entities": ">=4.3.12",
+    "mobx-vm-entities": ">=4.4.5",
     "react": ">=18.3.1",
     "react-router-dom": ">=6.23.1",
     "yammies": ">=2.0.4"

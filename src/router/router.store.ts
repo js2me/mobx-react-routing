@@ -1,6 +1,5 @@
 import { Router } from '@remix-run/router';
 import { PathPattern } from '@remix-run/router/utils';
-import { Disposable } from 'disposer-util';
 import { ComponentType } from 'react';
 
 import type { QueryParams } from '../query-params';
@@ -13,15 +12,20 @@ import type {
   RouterToConfig,
 } from './router.types';
 
-export interface RouterStore extends Disposable {
+export interface RouterStore {
   /**
-   * Модель для работы с квери параметрами
-   * Прибит к роутеру
+   * The current URL
+   */
+  currentUrl: string;
+
+  /**
+   * Query parameters model
+   * Attached to the router
    */
   readonly queryParams: QueryParams;
 
   /**
-   * Все совпадения роута, которые он нашел исходя из конфигурации роутов
+   * All route matches that the router found based on the route configuration
    *
    * @example
    * { path: '/url/:userId', component: UserIdPage }
@@ -37,64 +41,64 @@ export interface RouterStore extends Disposable {
   readonly matches: RouteMatch[];
 
   /**
-   * Самое последнее совпадение роута
+   * The last route match
    */
   readonly lastMatch: RouteMatch | null;
 
   /**
-   * Информация о текущей локации
+   * Information about the current location
    */
   readonly location: LocationData;
 
   /**
-   * Есть ли некие блокировки на роутинг
+   * Are there any routing blockages
    */
   readonly blocked: boolean;
 
   /**
-   * Отображается в случае если роутинг заблокирован или вью и модель роута лениво загружаются
+   * Show if routing is blocked or route view and model are lazily loaded
    */
   fallbackComponent?: ComponentType;
 
   errorBoundaryComponent?: ComponentType;
 
   /**
-   * Заблокировать роутинг
+   * Block routing
    */
   blockRouting(id?: string): string;
 
   /**
-   * Заблокировать роутинг по условию
+   * Block routing by condition
    *
-   * Создает mobx реакцию
-   * Возвращает dispose функцию
+   * Creates a mobx reaction
+   * Returns dispose function
    */
   blockRoutingIf(expression: () => boolean, id?: string): VoidFunction;
 
   /**
-   * Удалить блокировщик роутинга
+   * Remove routing blockage
    */
   unblockRouting(id: string): void;
 
   /**
-   * Создает объект {@link RouterPath} на основе конфигурации маршрута.
+   * Creates a {@link RouterPath} object based on the route configuration.
    *
-   * @param to - Конфигурация маршрута, включая в себя путь, параметры поиска и хеш.
-   * @returns Объект {@link RouterPath} со значениями pathname, search, hash.
+   * @param to - Route configuration, including path, search parameters, and hash.
+   * @returns A {@link RouterPath} object with pathname, search, and hash values.
    */
   createPath(to: RouterToConfig): RouterPath;
 
   /**
-   * Создает URL на основе конфигурации маршрута.
+   * Creates a URL based on the route configuration.
    *
-   * @param to - Конфигурация маршрута, включающая в себя путь и параметры поиска.
-   * @returns Сформированный URL в виде строки.
+   * @param to - Route configuration, including path and search parameters.
+   * @returns A fully formed URL string.
    */
   createUrl(to: RouterToConfig): string;
 
   /**
-   * Навигация по приложению.
-   * Предпочтительнее использовать этот метод, а не родной react-router-dom'а
+   * Navigation within the application.
+   * Prefer to use this method instead of the original react-router-dom's one
    */
   navigate(
     to: string | { pathname: string; search?: AnyObject },
@@ -102,7 +106,7 @@ export interface RouterStore extends Disposable {
   ): Promise<void>;
 
   /**
-   * Получить экземпляр оригинального роутера (react-router-dom)
+   * Get the original router instance (react-router-dom)
    */
   getInstance(): Router;
 
@@ -113,4 +117,11 @@ export interface RouterStore extends Disposable {
   ): { params: AnyObject; pathname: string } | null;
 
   isMatched(pathOrPattern: PathPattern | string): boolean;
+
+  clean(): void;
+
+  /**
+   * @deprecated Will be removed in 5.0.0. Please use clean() instead
+   */
+  dispose(): void;
 }
