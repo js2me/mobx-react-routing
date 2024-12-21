@@ -14,11 +14,13 @@
     "mobx",
     "react",
     "view-model",
-    "react-router-dom"
+    "react-router-dom",
+    "router",
+    "routing"
   ],
   "author": "js2me",
   "license": "MIT",
-  "description": "",
+  "description": "MobX react-router-dom integration",  
   "bugs": {
     "url": "https://github.com/js2me/mobx-react-routing/issues"
   },
