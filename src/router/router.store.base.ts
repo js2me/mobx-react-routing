@@ -19,7 +19,7 @@ import { generateId } from 'yammies/id';
 
 import { createRoute } from '../create-route';
 import { PageViewModelBase } from '../page-view-model';
-import { QueryParams, QueryParamsImpl } from '../query-params';
+import { QueryParams, QueryParamsBase } from '../query-params';
 import { AnyObject } from '../utils/types';
 
 import { RouterStore } from './router.store';
@@ -84,7 +84,7 @@ export class RouterStoreBase implements RouterStore {
       routes.map((route, index) => this.createRoute(route, index, [])),
     );
 
-    this.queryParams = new QueryParamsImpl(this.router);
+    this.queryParams = new QueryParamsBase(this.router);
     this.matches = this.collectRouteMatches(this.router.state.matches);
     this.location = { ...this.router.state.location };
 

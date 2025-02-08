@@ -8,19 +8,19 @@
 ### 1. Create `PageViewModelImpl` class  
 
 This class you will needed for creating your own view model classes  
-You can implement your own solution based on `PageViewModel<Params, ParentViewModel>` interface, but `AbstractPageViewModel` has a lot of ready solutions like `queryParams` or `pathParams`  
+You can implement your own solution based on `PageViewModel<Params, ParentViewModel>` interface, but `PageViewModelBase` has a lot of ready solutions like `queryParams` or `pathParams`  
 Only one thing that you should implement is the `getParentViewModel` and `constructor` because it requires (in most cases) `RootStore`  
 
 
 ```tsx  
-import { PageViewModelImpl as PageViewModelBaseImpl, RouteDeclaration, RouterStore } from 'mobx-react-routing';
+import { PageViewModelBase, RouteDeclaration, RouterStore } from 'mobx-react-routing';
 import { ViewModel } from 'mobx-view-model';
 
 export class PageViewModelImpl<
     Params extends AnyObject = EmptyObject,
     ParentViewModel extends ViewModel<any, any> | null = null,
   >
-  extends PageViewModelBaseImpl<Params, ParentViewModel>
+  extends PageViewModelBase<Params, ParentViewModel>
 {
   protected router: RouterStore;
 
@@ -42,11 +42,11 @@ export class PageViewModelImpl<
 ### 2. Create `RouterStoreImpl` Class  
 
 This class will contains info about all routing and will have all router utilities based on `react-router-dom`.  
-You can implement your own solution based on `RouterStore` interface, but `AbstractRouterStore` has a lot of ready solutions like `navigate`, `blockRoutingIf`, `blockRouting` etc.  
+You can implement your own solution based on `RouterStore` interface, but `RouterStoreBase` has a lot of ready solutions like `navigate`, `blockRoutingIf`, `blockRouting` etc.  
 
 ```tsx  
 import {
-  RouterStoreImpl as RouterStoreBaseImpl,
+  RouterStoreBase,
   RouterStoreParams,
   RouteDeclaration,
   createRoute,
@@ -55,7 +55,7 @@ import { RouteObject } from 'react-router-dom';
 
 import { PageViewModelImpl } from './page-view-model';
 
-export class RouterStoreImpl extends RouterStoreBaseImpl {
+export class RouterStoreImpl extends RouterStoreBase {
   constructor(
     protected rootStore: RootStore,
     params: RouterStoreParams,
@@ -64,7 +64,7 @@ export class RouterStoreImpl extends RouterStoreBaseImpl {
   }
 
   // override this method because we need to send rootStore to our view models
-  // but default `RouterStoreBaseImpl` this method implementation don't know about RootStore
+  // but default `RouterStoreBase` this method implementation don't know about RootStore
   createRoute(routeDeclaration: RouteDeclaration): RouteObject {
     return createRoute(routeDeclaration, this, (config) => {
       const VM = config.VM as unknown as typeof PageViewModelImpl;

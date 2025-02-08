@@ -6,7 +6,7 @@ import { AnyObject } from '../utils/types';
 import { QueryParams } from './query-params';
 import { RawQueryParams } from './query-params.types';
 
-export class QueryParamsImpl implements QueryParams {
+export class QueryParamsBase implements QueryParams {
   data: RawQueryParams;
 
   private routerSubscription: VoidFunction;
