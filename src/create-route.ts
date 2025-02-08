@@ -1,4 +1,4 @@
-import { ViewModelCreateConfig, withViewModel } from 'mobx-vm-entities';
+import { ViewModelCreateConfig, withViewModel } from 'mobx-view-model';
 import { ComponentType } from 'react';
 import { RouteObject } from 'react-router-dom';
 import { NoopComponent } from 'react-shared-utils/components/noop-component';

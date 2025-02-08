@@ -1,5 +1,4 @@
 import { AgnosticDataRouteMatch, Router } from '@remix-run/router';
-import { Disposer, IDisposer } from 'disposer-util';
 import { LinkedAbortController } from 'linked-abort-controller';
 import {
   action,
@@ -19,7 +18,7 @@ import {
 import { generateId } from 'yammies/id';
 
 import { createRoute } from '../create-route';
-import { PageViewModelImpl } from '../page-view-model';
+import { PageViewModelBase } from '../page-view-model';
 import { QueryParams, QueryParamsImpl } from '../query-params';
 import { AnyObject } from '../utils/types';
 
@@ -33,12 +32,8 @@ import {
   RouterToConfig,
 } from './router.types';
 
-export class RouterStoreImpl implements RouterStore {
+export class RouterStoreBase implements RouterStore {
   protected abortController: AbortController;
-  /**
-   * @deprecated Will be removed in 5.0.0. Please use clean() method and abortController instead
-   */
-  protected disposer: IDisposer;
 
   queryParams: QueryParams;
 
@@ -69,7 +64,7 @@ export class RouterStoreImpl implements RouterStore {
       index,
       parentPath,
       factory: (config, declaration) => {
-        const VM = config.VM as unknown as typeof PageViewModelImpl;
+        const VM = config.VM as unknown as typeof PageViewModelBase;
         return new VM(declaration, this, config);
       },
     });
@@ -81,7 +76,6 @@ export class RouterStoreImpl implements RouterStore {
     errorBoundaryComponent,
     abortSignal,
   }: RouterStoreParams) {
-    this.disposer = new Disposer();
     this.abortController = new LinkedAbortController(abortSignal);
     this.fallbackComponent = fallbackComponent;
     this.errorBoundaryComponent = errorBoundaryComponent;
@@ -220,12 +214,7 @@ export class RouterStoreImpl implements RouterStore {
   };
 
   clean(): void {
-    this.disposer.dispose();
     this.blockers.clear();
     this.abortController.abort();
-  }
-
-  dispose() {
-    this.clean();
   }
 }

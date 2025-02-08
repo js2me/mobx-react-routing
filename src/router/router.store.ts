@@ -119,9 +119,4 @@ export interface RouterStore {
   isMatched(pathOrPattern: PathPattern | string): boolean;
 
   clean(): void;
-
-  /**
-   * @deprecated Will be removed in 5.0.0. Please use clean() instead
-   */
-  dispose(): void;
 }

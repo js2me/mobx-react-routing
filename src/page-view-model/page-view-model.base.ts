@@ -1,4 +1,4 @@
-import { AnyViewModel, ViewModelImpl, ViewModelParams } from 'mobx-vm-entities';
+import { AnyViewModel, ViewModelBase, ViewModelParams } from 'mobx-view-model';
 
 import { RawQueryParams } from '../query-params';
 import { RouteDeclaration, RouterStore } from '../router';
@@ -6,11 +6,11 @@ import { AnyObject, EmptyObject } from '../utils/types';
 
 import { PageViewModel } from './page-view-model';
 
-export class PageViewModelImpl<
+export class PageViewModelBase<
     Params extends AnyObject = EmptyObject,
     ParentViewModel extends AnyViewModel | null = null,
   >
-  extends ViewModelImpl<any, ParentViewModel>
+  extends ViewModelBase<any, ParentViewModel>
   implements PageViewModel<Params, ParentViewModel>
 {
   protected router: RouterStore;

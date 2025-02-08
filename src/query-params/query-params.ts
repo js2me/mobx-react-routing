@@ -1,10 +1,8 @@
-import { Disposable } from 'disposer-util';
-
 import { AnyObject } from '../utils/types';
 
 import { RawQueryParams } from './query-params.types';
 
-export interface QueryParams extends Disposable {
+export interface QueryParams {
   /**
    * All parsed query parameters of the current url
    */
@@ -34,4 +32,11 @@ export interface QueryParams extends Disposable {
    * Get query parameters from search string
    */
   getSearchParamsData(search?: string): AnyObject;
+
+  /**
+   * @deprecated Will be removed in 6.0.0 release. Please use destroy() instead
+   */
+  dispose(): void;
+
+  destroy(): void;
 }

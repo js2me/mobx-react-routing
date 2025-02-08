@@ -2,7 +2,7 @@
 
 ## Usage (with using `rootStore`)  
 
-> requires `mobx-vm-entities` package usage  
+> requires `mobx-view-model` package usage  
 
 
 ### 1. Create `PageViewModelImpl` class  
@@ -14,7 +14,7 @@ Only one thing that you should implement is the `getParentViewModel` and `constr
 
 ```tsx  
 import { PageViewModelImpl as PageViewModelBaseImpl, RouteDeclaration, RouterStore } from 'mobx-react-routing';
-import { ViewModel } from 'mobx-vm-entities';
+import { ViewModel } from 'mobx-view-model';
 
 export class PageViewModelImpl<
     Params extends AnyObject = EmptyObject,

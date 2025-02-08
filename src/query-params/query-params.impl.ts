@@ -1,5 +1,4 @@
 import { Router } from '@remix-run/router';
-import { Disposer } from 'disposer-util';
 import { action, makeObservable, observable, runInAction } from 'mobx';
 
 import { AnyObject } from '../utils/types';
@@ -8,9 +7,9 @@ import { QueryParams } from './query-params';
 import { RawQueryParams } from './query-params.types';
 
 export class QueryParamsImpl implements QueryParams {
-  private disposer = new Disposer();
-
   data: RawQueryParams;
+
+  private routerSubscription: VoidFunction;
 
   constructor(private router: Router) {
     this.data = this.getSearchParamsData();
@@ -21,13 +20,11 @@ export class QueryParamsImpl implements QueryParams {
 
     makeObservable(this);
 
-    this.disposer.add(
-      this.router.subscribe(() => {
-        runInAction(() => {
-          this.data = this.getSearchParamsData();
-        });
-      }),
-    );
+    this.routerSubscription = this.router.subscribe(() => {
+      runInAction(() => {
+        this.data = this.getSearchParamsData();
+      });
+    });
   }
 
   getSearchParamsData(search: string = location.search) {
@@ -70,7 +67,11 @@ export class QueryParamsImpl implements QueryParams {
     );
   };
 
+  destroy(): void {
+    this.routerSubscription();
+  }
+
   dispose() {
-    this.disposer.dispose();
+    this.destroy();
   }
 }

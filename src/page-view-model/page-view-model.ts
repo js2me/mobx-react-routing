@@ -1,4 +1,4 @@
-import { AnyViewModel, ViewModel } from 'mobx-vm-entities';
+import { AnyViewModel, ViewModel } from 'mobx-view-model';
 
 import { AnyObject, EmptyObject } from '../utils/types';
 
