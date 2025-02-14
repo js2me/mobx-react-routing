@@ -35,9 +35,9 @@ importers:
       react-shared-utils:
         specifier: ^3.0.0
         version: 3.0.0(lodash-es@4.17.21)(react-simple-loadable@2.0.6(react@18.3.1))(react@18.3.1)
-      yammies:
-        specifier: ^2.0.4
-        version: 2.2.3
+      yummies:
+        specifier: ^3.0.19
+        version: 3.0.19
     devDependencies:
       '@types/lodash-es':
         specifier: ^4.17.12
@@ -2471,16 +2471,12 @@ packages:
   yallist@3.1.1:
     resolution: {integrity: sha512-a4UGQaWPH59mOXUYnAG2ewncQS4i4F43Tv3JoAM+s2VDAmS9NsK8GpDMLrCHPksFT7h3K6TOoUNn2pb7RoXx4g==}
 
-  yammies@2.2.3:
-    resolution: {integrity: sha512-oAHjgsUfEndNEM8v4c2fOPygra+DTiVV2DyS6fPcmNbINNzTz+PWqGurYu2TJSJuDC3kksoiW87vIofy4Nnscw==}
-    deprecated: Project has been renamed. Please use yummies package instead
-
   yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  yummies@3.0.17:
-    resolution: {integrity: sha512-B9hNLYQ1maj6iyHjamxRb10BovWP6KVNhUDx5XbWlxjqSQrAv38ZaJMTtfD5Aqk6Vt8Plq402Zi/T/LY7l6IdQ==}
+  yummies@3.0.19:
+    resolution: {integrity: sha512-e8Mg4Hh2Ha/OruQCktv0Ay39ahCLFMhjjwDeISBdyCMk28rzszN7gSYLhQPIajBND3DB4AAzzNP79tDevRBkkg==}
 
 snapshots:
 
@@ -4718,7 +4714,7 @@ snapshots:
       react: 18.3.1
       react-dom: 18.3.1(react@18.3.1)
       react-simple-loadable: 2.0.6(react@18.3.1)
-      yummies: 3.0.17
+      yummies: 3.0.19
 
   mobx@6.13.6: {}
 
@@ -5401,20 +5397,9 @@ snapshots:
 
   yallist@3.1.1: {}
 
-  yammies@2.2.3:
-    dependencies:
-      '@types/insane': 1.0.0
-      '@types/lodash-es': 4.17.12
-      clsx: 2.1.1
-      dayjs: 1.11.13
-      insane: 2.6.2
-      lodash-es: 4.17.21
-      nanoid: 5.0.9
-      tailwind-merge: 2.6.0
-
   yocto-queue@0.1.0: {}
 
-  yummies@3.0.17:
+  yummies@3.0.19:
     dependencies:
       '@types/insane': 1.0.0
       '@types/lodash-es': 4.17.12

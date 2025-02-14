@@ -1,4 +1,4 @@
-import { typeGuard } from 'yammies/type-guard';
+import { typeGuard } from 'yummies/type-guard';
 
 import { QueryParamsFieldModelConfig } from './query-params-field.types';
 

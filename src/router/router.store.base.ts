@@ -15,7 +15,7 @@ import {
   PathPattern,
   RouteObject,
 } from 'react-router-dom';
-import { generateId } from 'yammies/id';
+import { generateId } from 'yummies/id';
 
 import { createRoute } from '../create-route';
 import { PageViewModelBase } from '../page-view-model';
