@@ -5,7 +5,7 @@
     "clean": "rimraf dist",
     "check": "eslint . --fix",
     "prebuild": "npm run clean && npm run check",
-    "build:watch": "nodemon --watch src --ext ts --exec \"tsc && node ./post-build.mjs\"",
+    "build:watch": "pnpm build && nodemon --watch src --ext ts --exec \"tsc && node ./post-build.mjs\"",
     "build": "tsc && node ./post-build.mjs",
     "pub:patch": "PUBLISH=true PUBLISH_VERSION=patch pnpm run build",
     "pub:minor": "PUBLISH=true PUBLISH_VERSION=minor pnpm run build",
