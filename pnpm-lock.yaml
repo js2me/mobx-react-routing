@@ -33,8 +33,8 @@ importers:
         specifier: ^6.23.1
         version: 6.30.0(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
       react-shared-utils:
-        specifier: ^3.1.1
-        version: 3.1.1(lodash-es@4.17.21)(react-simple-loadable@2.1.0(react@18.3.1))(react@18.3.1)
+        specifier: ^3.2.0
+        version: 3.2.0(lodash-es@4.17.21)(react@18.3.1)
       yummies:
         specifier: ^3.0.39
         version: 3.0.39
@@ -2195,12 +2195,11 @@ packages:
     peerDependencies:
       react: '>=16.8'
 
-  react-shared-utils@3.1.1:
-    resolution: {integrity: sha512-kMHsZqM+Pk2lfgZTuwp9Wam8RUXFYhnYxu6sfE7g42HFi+db22+s1uWXY/OXFMl1+p5srhlCIjwIJ9Gg/JQesA==}
+  react-shared-utils@3.2.0:
+    resolution: {integrity: sha512-6Rc5XbV/vCQawZorSd6l3ABW1PSY4vrAbAaD7A62EPb+Qodr3Th3mLUckwPmhIVMUwAB6WzcGJ85Ss5mMdu/eg==}
     peerDependencies:
-      lodash-es: '*'
+      lodash-es: ^4.17.21
       react: ^18.3.1
-      react-simple-loadable: ^2.0.4
 
   react-simple-loadable@2.1.0:
     resolution: {integrity: sha512-5mF++exqgeAcBB716M1fekT3w/R+qiemKnnLMSEUQbMrarft78xlApI3Vw50xH4sUjzAkxEnzkJWztHBcs0t3g==}
@@ -5170,11 +5169,12 @@ snapshots:
       '@remix-run/router': 1.23.0
       react: 18.3.1
 
-  react-shared-utils@3.1.1(lodash-es@4.17.21)(react-simple-loadable@2.1.0(react@18.3.1))(react@18.3.1):
+  react-shared-utils@3.2.0(lodash-es@4.17.21)(react@18.3.1):
     dependencies:
       lodash-es: 4.17.21
       react: 18.3.1
       react-simple-loadable: 2.1.0(react@18.3.1)
+      yummies: 3.0.39
 
   react-simple-loadable@2.1.0(react@18.3.1):
     dependencies:
