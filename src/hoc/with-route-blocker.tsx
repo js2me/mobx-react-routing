@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { ComponentType } from 'react';
 
-import type { RouterStore } from '../router';
+import type { RouterStore } from '../router/index.js';
 
 const DefaultFallback = () => null;
 

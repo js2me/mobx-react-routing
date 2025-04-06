@@ -16,13 +16,13 @@ import {
   RouteObject,
 } from 'react-router-dom';
 import { generateId } from 'yummies/id';
+import { AnyObject } from 'yummies/utils/types';
 
-import { createRoute } from '../create-route';
-import { PageViewModelBase } from '../page-view-model';
-import { QueryParams, QueryParamsBase } from '../query-params';
-import { AnyObject } from '../utils/types';
+import { createRoute } from '../create-route.js';
+import { PageViewModelBase } from '../page-view-model/index.js';
+import { QueryParams, QueryParamsBase } from '../query-params/index.js';
 
-import { RouterStore } from './router.store';
+import { RouterStore } from './router.store.js';
 import {
   LocationData,
   RouteDeclaration,
@@ -30,7 +30,7 @@ import {
   RouterPath,
   RouterStoreParams,
   RouterToConfig,
-} from './router.types';
+} from './router.types.js';
 
 export class RouterStoreBase implements RouterStore {
   protected abortController: AbortController;

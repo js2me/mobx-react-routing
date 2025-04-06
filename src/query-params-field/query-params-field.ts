@@ -4,8 +4,8 @@ import {
   DefinePresetByType,
   QueryParamsFieldModelConfig,
   QueryParamsFieldModelPresetConfig,
-} from './query-params-field.types';
-import { queryParamsPresets } from './query-params-presets';
+} from './query-params-field.types.js';
+import { queryParamsPresets } from './query-params-presets.js';
 
 export class QueryParamsField<T> {
   name: string;

@@ -1,7 +1,7 @@
 import { ComponentType, ReactNode } from 'react';
+import { AnyObject, Class } from 'yummies/utils/types';
 
-import { PageViewModel } from '../page-view-model';
-import { AnyObject, Class } from '../utils/types';
+import { PageViewModel } from '../page-view-model/index.js';
 
 interface RouteComponentAndModel {
   Component: ComponentType<any>;

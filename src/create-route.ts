@@ -4,10 +4,10 @@ import { RouteObject } from 'react-router-dom';
 import { NoopComponent } from 'react-shared-utils/components/noop-component';
 import { loadable } from 'react-shared-utils/loadable';
 
-import { withRouteBlocker } from './hoc';
-import { VMPayloadTransferHOC } from './hoc/vm-payload-transfer';
-import { PageViewModel } from './page-view-model';
-import { RouteDeclaration, RouterStore } from './router';
+import { withRouteBlocker } from './hoc/index.js';
+import { VMPayloadTransferHOC } from './hoc/vm-payload-transfer.js';
+import { PageViewModel } from './page-view-model/index.js';
+import { RouteDeclaration, RouterStore } from './router/index.js';
 
 declare const process: { env: { NODE_ENV?: string } };
 

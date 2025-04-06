@@ -1,16 +1,15 @@
-import { Router } from '@remix-run/router';
-import { PathPattern } from '@remix-run/router/utils';
+import { Router, PathPattern } from '@remix-run/router';
 import { ComponentType } from 'react';
+import { AnyObject } from 'yummies/utils/types';
 
-import type { QueryParams } from '../query-params';
-import { AnyObject } from '../utils/types';
+import type { QueryParams } from '../query-params/index.js';
 
 import type {
   LocationData,
   RouteMatch,
   RouterPath,
   RouterToConfig,
-} from './router.types';
+} from './router.types.js';
 
 export interface RouterStore {
   /**

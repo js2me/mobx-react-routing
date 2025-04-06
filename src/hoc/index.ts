@@ -1,1 +1,1 @@
-export * from './with-route-blocker';
+export * from './with-route-blocker.js';

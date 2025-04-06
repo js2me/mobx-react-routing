@@ -1,8 +1,8 @@
-import { RouterStoreBase } from './router.store.base';
+import { RouterStoreBase } from './router.store.base.js';
 
-export * from './router.store';
-export * from './router.store.base';
-export * from './router.types';
+export * from './router.store.js';
+export * from './router.store.base.js';
+export * from './router.types.js';
 
 /**
  * @deprecated Will be removed in 6.0.0 release. Please use {@link RouterStoreBase} instead

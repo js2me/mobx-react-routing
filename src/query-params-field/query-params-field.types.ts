@@ -1,7 +1,8 @@
-import type { QueryParams } from '../query-params';
-import { AnyObject } from '../utils/types';
+import { AnyObject } from 'yummies/utils/types';
 
-import type { queryParamsPresets } from './query-params-presets';
+import type { QueryParams } from '../query-params/index.js';
+
+import type { queryParamsPresets } from './query-params-presets.js';
 
 export interface QueryParamsFieldModelConfig<T> {
   queryParams: QueryParams;

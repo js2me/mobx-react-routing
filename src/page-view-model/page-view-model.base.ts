@@ -1,10 +1,10 @@
 import { AnyViewModel, ViewModelBase, ViewModelParams } from 'mobx-view-model';
+import { AnyObject, EmptyObject } from 'yummies/utils/types';
 
-import { RawQueryParams } from '../query-params';
-import { RouteDeclaration, RouterStore } from '../router';
-import { AnyObject, EmptyObject } from '../utils/types';
+import { RawQueryParams } from '../query-params/index.js';
+import { RouteDeclaration, RouterStore } from '../router/index.js';
 
-import { PageViewModel } from './page-view-model';
+import { PageViewModel } from './page-view-model.js';
 
 export class PageViewModelBase<
     Params extends AnyObject = EmptyObject,

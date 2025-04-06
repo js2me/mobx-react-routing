@@ -1,7 +1,6 @@
 import { ComponentType } from 'react';
 import { useParams } from 'react-router-dom';
-
-import { Maybe } from '../utils/types';
+import { Maybe } from 'yummies/utils/types';
 
 export const VMPayloadTransferHOC = (Component: Maybe<ComponentType<any>>) => {
   if (!Component) return Component;

@@ -1,8 +1,8 @@
-export * from './router';
-export * from './hoc';
-export * from './query-params';
-export * from './query-params-field';
-export * from './components';
-export * from './page-view-model';
+export * from './router/index.js';
+export * from './hoc/index.js';
+export * from './query-params/index.js';
+export * from './query-params-field/index.js';
+export * from './components/index.js';
+export * from './page-view-model/index.js';
 
-export * from './create-route';
+export * from './create-route.js';

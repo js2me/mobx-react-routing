@@ -1,10 +1,9 @@
 import { Router } from '@remix-run/router';
 import { action, makeObservable, observable, runInAction } from 'mobx';
+import { AnyObject } from 'yummies/utils/types';
 
-import { AnyObject } from '../utils/types';
-
-import { QueryParams } from './query-params';
-import { RawQueryParams } from './query-params.types';
+import { QueryParams } from './query-params.js';
+import { RawQueryParams } from './query-params.types.js';
 
 export class QueryParamsBase implements QueryParams {
   data: RawQueryParams;

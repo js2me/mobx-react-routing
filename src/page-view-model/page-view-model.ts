@@ -1,6 +1,5 @@
 import { AnyViewModel, ViewModel } from 'mobx-view-model';
-
-import { AnyObject, EmptyObject } from '../utils/types';
+import { AnyObject, EmptyObject } from 'yummies/utils/types';
 
 export interface PageViewModel<
   Params extends AnyObject = EmptyObject,
