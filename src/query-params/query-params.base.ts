@@ -69,8 +69,4 @@ export class QueryParamsBase implements QueryParams {
   destroy(): void {
     this.routerSubscription();
   }
-
-  dispose() {
-    this.destroy();
-  }
 }

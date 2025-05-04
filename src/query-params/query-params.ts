@@ -33,10 +33,5 @@ export interface QueryParams {
    */
   getSearchParamsData(search?: string): AnyObject;
 
-  /**
-   * @deprecated Will be removed in 6.0.0 release. Please use destroy() instead
-   */
-  dispose(): void;
-
   destroy(): void;
 }
