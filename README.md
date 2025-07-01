@@ -49,6 +49,7 @@ import {
   RouterStoreBase,
   RouterStoreParams,
   RouteDeclaration,
+  CreateRouteViewModelFactory,
   createRoute,
 } from 'mobx-react-routing';
 import { RouteObject } from 'react-router-dom';
@@ -65,10 +66,25 @@ export class RouterStoreImpl extends RouterStoreBase {
 
   // override this method because we need to send rootStore to our view models
   // but default `RouterStoreBase` this method implementation don't know about RootStore
-  createRoute(routeDeclaration: RouteDeclaration): RouteObject {
-    return createRoute(routeDeclaration, this, (config) => {
+  createRoute(
+    declaration: RouteDeclaration,
+    index: number,
+    parentPath: number[],
+  ): RouteObject {
+    const createViewModel: CreateRouteViewModelFactory = (
+      config,
+      declaration,
+    ) => {
       const VM = config.VM as unknown as typeof PageViewModelImpl;
-      return new VM(this.rootStore, routeDeclaration, config);
+      return new VM(this.rootStore, declaration, config);
+    };
+
+    return createRoute({
+      declaration,
+      router: this,
+      index,
+      parentPath,
+      factory: createViewModel,
     });
   }
 }
