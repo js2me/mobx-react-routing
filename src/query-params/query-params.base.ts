@@ -1,6 +1,7 @@
-import { Router } from '@remix-run/router';
 import { action, makeObservable, observable, runInAction } from 'mobx';
 import { AnyObject } from 'yummies/utils/types';
+
+import { ReactRouterInstance } from '../router/router.types.js';
 
 import { QueryParams } from './query-params.js';
 import { RawQueryParams } from './query-params.types.js';
@@ -10,7 +11,7 @@ export class QueryParamsBase implements QueryParams {
 
   private routerSubscription: VoidFunction;
 
-  constructor(private router: Router) {
+  constructor(private router: ReactRouterInstance) {
     this.data = this.getSearchParamsData();
 
     observable.struct(this, 'data');

@@ -1,4 +1,4 @@
-import { Router, PathPattern } from '@remix-run/router';
+import { PathPattern } from '@remix-run/router';
 import { ComponentType } from 'react';
 import { AnyObject } from 'yummies/utils/types';
 
@@ -6,6 +6,7 @@ import type { QueryParams } from '../query-params/index.js';
 
 import type {
   LocationData,
+  ReactRouterInstance,
   RouteMatch,
   RouterPath,
   RouterToConfig,
@@ -56,6 +57,7 @@ export interface RouterStore {
 
   /**
    * Show if routing is blocked or route view and model are lazily loaded
+   * @note this component is not using in 7 version of react-router-dom
    */
   fallbackComponent?: ComponentType;
 
@@ -107,7 +109,7 @@ export interface RouterStore {
   /**
    * Get the original router instance (react-router-dom)
    */
-  getInstance(): Router;
+  getInstance(): ReactRouterInstance;
 
   back(): Promise<void>;
 

@@ -1,4 +1,3 @@
-import { AgnosticDataRouteMatch, Router } from '@remix-run/router';
 import { LinkedAbortController } from 'linked-abort-controller';
 import {
   action,
@@ -11,6 +10,8 @@ import {
 import { ComponentType } from 'react';
 import {
   createBrowserRouter,
+  createHashRouter,
+  createMemoryRouter,
   matchPath,
   PathPattern,
   RouteObject,
@@ -25,6 +26,7 @@ import { QueryParams, QueryParamsBase } from '../query-params/index.js';
 import { RouterStore } from './router.store.js';
 import {
   LocationData,
+  ReactRouterInstance,
   RouteDeclaration,
   RouteMatch,
   RouterPath,
@@ -43,7 +45,7 @@ export class RouterStoreBase implements RouterStore {
 
   private blockers = new Set<string>();
 
-  private router: Router;
+  private router: ReactRouterInstance;
 
   fallbackComponent?: ComponentType;
 
@@ -75,13 +77,33 @@ export class RouterStoreBase implements RouterStore {
     fallbackComponent,
     errorBoundaryComponent,
     abortSignal,
+    type = 'browser',
+    ...libRouterParams
   }: RouterStoreParams) {
     this.abortController = new LinkedAbortController(abortSignal);
     this.fallbackComponent = fallbackComponent;
     this.errorBoundaryComponent = errorBoundaryComponent;
 
-    this.router = createBrowserRouter(
+    let createRouterFn;
+
+    switch (type) {
+      case 'browser': {
+        createRouterFn = createBrowserRouter;
+        break;
+      }
+      case 'hash': {
+        createRouterFn = createHashRouter;
+        break;
+      }
+      case 'memory': {
+        createRouterFn = createMemoryRouter;
+        break;
+      }
+    }
+
+    this.router = createRouterFn(
       routes.map((route, index) => this.createRoute(route, index, [])),
+      libRouterParams,
     );
 
     this.queryParams = new QueryParamsBase(this.router);
@@ -112,7 +134,7 @@ export class RouterStoreBase implements RouterStore {
     });
   }
 
-  collectRouteMatches(matches: AgnosticDataRouteMatch[]) {
+  collectRouteMatches(matches: ReactRouterInstance['state']['matches']) {
     return matches.map((match): RouteMatch => {
       return {
         id: match.route.id!,
@@ -195,7 +217,7 @@ export class RouterStoreBase implements RouterStore {
     this.blockers.delete(id);
   }
 
-  getInstance(): Router {
+  getInstance(): ReactRouterInstance {
     return this.router;
   }
 

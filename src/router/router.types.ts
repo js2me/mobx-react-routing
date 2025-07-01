@@ -1,4 +1,5 @@
 import { ComponentType, ReactNode } from 'react';
+import { createBrowserRouter, RouterProviderProps } from 'react-router-dom';
 import { AnyObject, Class } from 'yummies/utils/types';
 
 import { PageViewModel } from '../page-view-model/index.js';
@@ -7,6 +8,8 @@ interface RouteComponentAndModel {
   Component: ComponentType<any>;
   Model: Class<PageViewModel<any, any>>;
 }
+
+export type ReactRouterInstance = RouterProviderProps['router'];
 
 export interface RouteMatch {
   /**
@@ -98,7 +101,13 @@ export interface RouterPath {
  */
 export type RouterToConfig = string | { pathname: string; search?: AnyObject };
 
-export interface RouterStoreParams {
+type CreateLibRouterParams = Exclude<
+  Parameters<typeof createBrowserRouter>[1],
+  undefined | null
+>;
+
+export interface RouterStoreParams extends Partial<CreateLibRouterParams> {
+  type?: 'hash' | 'browser' | 'memory';
   routes: RouteDeclaration[];
   fallbackComponent?: ComponentType;
   errorBoundaryComponent?: ComponentType;

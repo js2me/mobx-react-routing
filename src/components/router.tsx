@@ -12,8 +12,10 @@ export const Router = observer(({ router }: RouterProps) => {
 
   return (
     <RouterProvider
-      router={router.getInstance()}
-      fallbackElement={FallbackComponent && <FallbackComponent />}
+      {...({
+        router: router.getInstance(),
+        fallbackElement: FallbackComponent && <FallbackComponent />,
+      } as any)}
     />
   );
 });
