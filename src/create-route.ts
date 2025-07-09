@@ -100,6 +100,7 @@ export const createRoute: DefaultCreateRouteFunction = ({
           ? withViewModel(Model, {
               id,
               fallback,
+              ctx: declaration.ctx,
               factory: (config) => factory(config, declaration),
             })(UsageComponent)
           : UsageComponent;
@@ -115,6 +116,7 @@ export const createRoute: DefaultCreateRouteFunction = ({
         ? withViewModel(Model, {
             id,
             fallback,
+            ctx: declaration.ctx,
             factory: (config) => factory(config, declaration),
           })(UsageComponent)
         : UsageComponent,

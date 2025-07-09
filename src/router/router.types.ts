@@ -1,3 +1,4 @@
+import { ViewModelParams } from 'mobx-view-model';
 import { ComponentType, ReactNode } from 'react';
 import { createBrowserRouter, RouterProviderProps } from 'react-router-dom';
 import { AnyObject, Class } from 'yummies/utils/types';
@@ -52,7 +53,9 @@ export interface LocationData {
   hash: string;
 }
 
-export interface RouteDeclaration extends Partial<RouteComponentAndModel> {
+export interface RouteDeclaration
+  extends Partial<RouteComponentAndModel>,
+    Pick<ViewModelParams, 'ctx'> {
   /**
    * Root route from the parent path or not
    */
