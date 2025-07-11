@@ -1,4 +1,8 @@
-import { ViewModelCreateConfig, withViewModel } from 'mobx-view-model';
+import {
+  CreateViewModelFactoryFn,
+  ViewModelCreateConfig,
+  withViewModel,
+} from 'mobx-view-model';
 import { ComponentType } from 'react';
 import { RouteObject } from 'react-router-dom';
 import { loadable } from 'react-simple-loadable';
@@ -15,7 +19,7 @@ const NoopComponent = () => null;
 export interface CreateRouteFunctionParams {
   declaration: RouteDeclaration;
   router: RouterStore;
-  factory: CreateRouteViewModelFactory;
+  factory?: CreateRouteViewModelFactory;
   createChildRoute?: DefaultCreateRouteFunction;
   /**
    * Индексовое представление роута
@@ -57,6 +61,10 @@ export const createRoute: DefaultCreateRouteFunction = ({
 
   const treePath = [...parentPath, index];
 
+  const factoryFn: undefined | CreateViewModelFactoryFn<any> = factory
+    ? (config) => factory(config, config.ctx!.routeDeclaration)
+    : undefined;
+
   const id =
     origId ??
     (process.env.NODE_ENV === 'production'
@@ -72,7 +80,7 @@ export const createRoute: DefaultCreateRouteFunction = ({
         createChildRoute({
           declaration,
           router,
-          factory: (config) => factory(config, declaration),
+          factory,
           createChildRoute,
           parentPath: treePath,
           index,
@@ -100,8 +108,11 @@ export const createRoute: DefaultCreateRouteFunction = ({
           ? withViewModel(Model, {
               id,
               fallback,
-              ctx: declaration.ctx,
-              factory: (config) => factory(config, declaration),
+              ctx: {
+                routeDeclaration: declaration,
+                ...declaration.ctx,
+              },
+              factory: factoryFn,
             })(UsageComponent)
           : UsageComponent;
       }, fallback),
@@ -116,8 +127,11 @@ export const createRoute: DefaultCreateRouteFunction = ({
         ? withViewModel(Model, {
             id,
             fallback,
-            ctx: declaration.ctx,
-            factory: (config) => factory(config, declaration),
+            ctx: {
+              routeDeclaration: declaration,
+              ...declaration.ctx,
+            },
+            factory: factoryFn,
           })(UsageComponent)
         : UsageComponent,
       fallback,
