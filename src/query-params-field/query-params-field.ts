@@ -1,6 +1,6 @@
 import { action, computed, makeObservable } from 'mobx';
 
-import {
+import type {
   DefinePresetByType,
   QueryParamsFieldModelConfig,
   QueryParamsFieldModelPresetConfig,

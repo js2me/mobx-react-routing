@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react-lite';
-import { ComponentType } from 'react';
+import type { ComponentType } from 'react';
 
 import type { RouterStore } from '../router/index.js';
 

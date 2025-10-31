@@ -1,6 +1,6 @@
-import { PathPattern } from '@remix-run/router';
-import { ComponentType } from 'react';
-import { AnyObject } from 'yummies/utils/types';
+import type { PathPattern } from '@remix-run/router';
+import type { ComponentType } from 'react';
+import type { AnyObject } from 'yummies/types';
 
 import type { QueryParams } from '../query-params/index.js';
 

@@ -1,16 +1,16 @@
 import {
-  CreateViewModelFactoryFn,
-  ViewModelCreateConfig,
+  type CreateViewModelFactoryFn,
+  type ViewModelCreateConfig,
   withViewModel,
 } from 'mobx-view-model';
-import { ComponentType } from 'react';
-import { RouteObject } from 'react-router-dom';
+import type { ComponentType } from 'react';
+import type { RouteObject } from 'react-router-dom';
 import { loadable } from 'react-simple-loadable';
 
 import { withRouteBlocker } from './hoc/index.js';
 import { VMPayloadTransferHOC } from './hoc/vm-payload-transfer.js';
-import { PageViewModel } from './page-view-model/index.js';
-import { RouteDeclaration, RouterStore } from './router/index.js';
+import type { PageViewModel } from './page-view-model/index.js';
+import type { RouteDeclaration, RouterStore } from './router/index.js';
 
 declare const process: { env: { NODE_ENV?: string } };
 

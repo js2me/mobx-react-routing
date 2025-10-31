@@ -3,7 +3,9 @@
   "version": "7.1.0",
   "scripts": {
     "clean": "rimraf dist",
-    "check": "eslint . --fix",
+    "lint:check": "pnpm exec biome check --write --no-errors-on-unmatched --files-ignore-unknown=true",
+    "ts:check": "tsc --noEmit",
+    "check": "npm run lint:check && npm run ts:check",
     "prebuild": "npm run clean && npm run check",
     "build:watch": "pnpm build && nodemon --watch src --ext ts,tsx --exec \"tsc && node ./post-build.mjs\"",
     "build": "tsc && node ./post-build.mjs",
@@ -35,7 +37,7 @@
     "linked-abort-controller": "^1.0.4",
     "lodash-es": "^4.17.21",
     "react-simple-loadable": "^2.3.8",
-    "yummies": "^4.0.0"
+    "yummies": "^6.0.0"
   },
   "peerDependencies": {
     "@remix-run/router": "^1.23.0",
@@ -46,11 +48,11 @@
     "react-router-dom": "^6.23.1 || ^7.0.0"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.2.4",
     "@types/lodash-es": "^4.17.12",
     "@types/node": "^20.17.30",
     "@types/react": "^18.3.20",
-    "eslint": "^8.57.1",
-    "js2me-eslint-config": "^1.0.7",
+    "js2me-biome-config": "^1.0.7",
     "js2me-exports-post-build-script": "^2.0.18",
     "nodemon": "^3.1.9",
     "rimraf": "^6.0.1",

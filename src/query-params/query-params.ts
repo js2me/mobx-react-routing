@@ -1,6 +1,5 @@
-import { AnyObject } from 'yummies/utils/types';
-
-import { RawQueryParams } from './query-params.types.js';
+import type { AnyObject } from 'yummies/types';
+import type { RawQueryParams } from './query-params.types.js';
 
 export interface QueryParams {
   /**

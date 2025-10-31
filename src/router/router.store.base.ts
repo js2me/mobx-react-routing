@@ -7,24 +7,24 @@ import {
   reaction,
   runInAction,
 } from 'mobx';
-import { ComponentType } from 'react';
+import type { ComponentType } from 'react';
 import {
   createBrowserRouter,
   createHashRouter,
   createMemoryRouter,
   matchPath,
-  PathPattern,
-  RouteObject,
+  type PathPattern,
+  type RouteObject,
 } from 'react-router-dom';
 import { generateId } from 'yummies/id';
-import { AnyObject } from 'yummies/utils/types';
+import type { AnyObject } from 'yummies/types';
 
 import { createRoute } from '../create-route.js';
-import { PageViewModelBase } from '../page-view-model/index.js';
-import { QueryParams, QueryParamsBase } from '../query-params/index.js';
+import type { PageViewModelBase } from '../page-view-model/index.js';
+import { type QueryParams, QueryParamsBase } from '../query-params/index.js';
 
-import { RouterStore } from './router.store.js';
-import {
+import type { RouterStore } from './router.store.js';
+import type {
   LocationData,
   ReactRouterInstance,
   RouteDeclaration,
@@ -84,7 +84,7 @@ export class RouterStoreBase implements RouterStore {
     this.fallbackComponent = fallbackComponent;
     this.errorBoundaryComponent = errorBoundaryComponent;
 
-    let createRouterFn;
+    let createRouterFn: typeof createBrowserRouter;
 
     switch (type) {
       case 'browser': {

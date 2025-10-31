@@ -1,9 +1,12 @@
-import { ViewModelParams } from 'mobx-view-model';
-import { ComponentType, ReactNode } from 'react';
-import { createBrowserRouter, RouterProviderProps } from 'react-router-dom';
-import { AnyObject, Class } from 'yummies/utils/types';
+import type { ViewModelParams } from 'mobx-view-model';
+import type { ComponentType, ReactNode } from 'react';
+import type {
+  createBrowserRouter,
+  RouterProviderProps,
+} from 'react-router-dom';
+import type { AnyObject, Class } from 'yummies/types';
 
-import { PageViewModel } from '../page-view-model/index.js';
+import type { PageViewModel } from '../page-view-model/index.js';
 
 interface RouteComponentAndModel {
   Component: ComponentType<any>;

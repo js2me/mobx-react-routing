@@ -1,10 +1,10 @@
 import { action, makeObservable, observable, runInAction } from 'mobx';
-import { AnyObject } from 'yummies/utils/types';
+import type { AnyObject } from 'yummies/types';
 
-import { ReactRouterInstance } from '../router/router.types.js';
+import type { ReactRouterInstance } from '../router/router.types.js';
 
-import { QueryParams } from './query-params.js';
-import { RawQueryParams } from './query-params.types.js';
+import type { QueryParams } from './query-params.js';
+import type { RawQueryParams } from './query-params.types.js';
 
 export class QueryParamsBase implements QueryParams {
   data: RawQueryParams;

@@ -1,6 +1,6 @@
 import { typeGuard } from 'yummies/type-guard';
 
-import { QueryParamsFieldModelConfig } from './query-params-field.types.js';
+import type { QueryParamsFieldModelConfig } from './query-params-field.types.js';
 
 export const queryParamsPresets = {
   'string[]': {

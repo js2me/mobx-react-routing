@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react-lite';
 import { RouterProvider } from 'react-router-dom';
 
-import { RouterStore } from '../router/index.js';
+import type { RouterStore } from '../router/index.js';
 
 interface RouterProps {
   router: RouterStore;
